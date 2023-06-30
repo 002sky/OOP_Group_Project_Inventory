@@ -31,7 +31,6 @@ public class Order {
     public Date getOrderReceivedDate() {
         return orderReceivedDate;
     }
-
     public boolean isOrderStatus() {
         return orderStatus;
     }
