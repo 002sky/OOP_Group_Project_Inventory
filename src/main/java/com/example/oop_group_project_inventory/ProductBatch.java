@@ -39,7 +39,6 @@ public class ProductBatch {
     public Inventory getStoredInventory() {
         return storedInventory;
     }
-
     public Date getReceivedDate() {
         return receivedDate;
     }
