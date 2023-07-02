@@ -9,7 +9,7 @@ public class Electronic extends Product {
     }
 
     protected Electronic(String productID,String productName,double unitPrice, double sellingPrice ,String productBrand,boolean productStatus,String color, String model){
-        super();
+        super(productID,productName,unitPrice,sellingPrice,productBrand,productStatus);
         this.color = color;
         this.model = model;
     }

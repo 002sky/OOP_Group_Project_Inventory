@@ -12,7 +12,7 @@ public class Clothing extends Product {
     }
 
     protected Clothing(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus, String clothingType, char clothingSize, String color, String material) {
-        super();
+        super(productID,productName,unitPrice,sellingPrice,productBrand,productStatus);
         this.clothingType = clothingType;
         this.clothingSize = clothingSize;
         this.color = color;
