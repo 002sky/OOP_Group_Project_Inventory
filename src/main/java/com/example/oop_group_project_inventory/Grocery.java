@@ -27,7 +27,7 @@ public class Grocery extends Product {
 
     public void loadFromDatabase() {
 //        ArrayList<Grocery> GroceryList = null;
-        String url = "jdbc:ucanaccess://C://Users//User//IdeaProjects//OOP_Group_Project_Inventory//src//main//java//Database//Inventory.accdb";
+        String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
 
         try {
             Connection connection = DriverManager.getConnection(url);

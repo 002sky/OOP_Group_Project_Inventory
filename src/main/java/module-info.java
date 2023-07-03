@@ -9,6 +9,7 @@ module com.example.oop_group_project_inventory {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires ucanaccess;
 
 
     opens com.example.oop_group_project_inventory to javafx.fxml;
