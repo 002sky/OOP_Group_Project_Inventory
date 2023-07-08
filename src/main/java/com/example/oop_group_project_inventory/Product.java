@@ -1,5 +1,8 @@
 package com.example.oop_group_project_inventory;
 
+import java.sql.*;
+import java.util.Date;
+
 public class Product {
     private String productID;
     private String productName;
@@ -65,6 +68,8 @@ public class Product {
     public boolean isProductStatus() {
         return productStatus;
     }
+
+
 
 
 

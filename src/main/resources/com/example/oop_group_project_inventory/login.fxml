@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.Login">
+    <children>
+        <Label layoutX="40.0" layoutY="35.0" prefHeight="55.0" prefWidth="521.0" text="Inventory Management System" textOverrun="CLIP">
+            <font>
+                <Font size="38.0" />
+            </font>
+        </Label>
+
+        <!--  Login Form Grouping     -->
+        <Group layoutX="186.0" layoutY="145.0">
+            <children>
+                <Label layoutY="14.0" prefHeight="33.0" prefWidth="59.0" text="Login : ">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+
+                <!-- Error message label set visible when return error -->
+                <Label layoutX="99.0" layoutY="47.0" prefHeight="17.0" prefWidth="150.0" text="Label" visible="false" />
+                <TextField layoutX="99.0" layoutY="18.0" />
+                <Label layoutY="89.0" prefHeight="35.0" prefWidth="79.0" text="Password:">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <PasswordField fx:id="tfPassword" layoutX="99.0" layoutY="94.0" />
+
+                <!-- Error message label set visible when return error -->
+                <Label fx:id="lbPasswordError" layoutX="99.0" layoutY="124.0" prefHeight="17.0" prefWidth="147.0" text="Label" visible="false" />
+                <CheckBox layoutX="254.0" layoutY="98.0" mnemonicParsing="false" text="Hide" />
+                <Button layoutX="159.0" layoutY="149.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Login" onMouseClicked="#changeStage"/>
+
+                <!--                onMouseClicked="#checkForm"-->
+
+            </children>
+        </Group>
+    </children>
+</AnchorPane>

@@ -25,8 +25,8 @@ public class Grocery extends Product {
         this.expiry_date = expiry_date;
     }
 
-    public void loadFromDatabase() {
-//        ArrayList<Grocery> GroceryList = null;
+    public ArrayList<Grocery> loadFromDatabase() {
+        ArrayList<Grocery> GroceryList = new ArrayList<>();
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
 
         try {
@@ -47,15 +47,18 @@ public class Grocery extends Product {
 
 
                 Grocery a = new Grocery(id,name,unitPrice,sellingPrice,brand,status,expiry);
+                GroceryList.add(a);
 
                 System.out.println(a.getProductID() + " " + a.getProductName() + " " + a.getSellingPrice());
             }
+
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        return GroceryList;
     }
 
 
