@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.MainPage" fx:id="mainPage">
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.oop_group_project_inventory.MainPage" fx:id="mainPage">
     <left>
         <Accordion prefHeight="400.0" prefWidth="119.0" BorderPane.alignment="CENTER">
             <panes>
@@ -15,9 +16,14 @@
                             <children>
                                 <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
                                     <items>
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Add" onMouseClicked="#LoadAddProduct"/>
+                                        <Label layoutX="40.0" layoutY="35.0" prefHeight="55.0" prefWidth="521.0" text="Inventory Management System"
+                                               textOverrun="CLIP" styleClass="lbl-success">
+
+                                        </Label>
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Add"
+                                                onMouseClicked="#LoadAddProduct"/>
                                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0"
-                                                text="View" onMouseClicked="#loadViewProduct" />
+                                                text="View" onMouseClicked="#loadViewProduct"/>
                                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0"
                                                 text="Button"/>
                                     </items>
