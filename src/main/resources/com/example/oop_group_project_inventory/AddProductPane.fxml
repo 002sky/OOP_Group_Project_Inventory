@@ -98,7 +98,7 @@
                         <Label text="Clothing Type : "/>
                         <TextField fx:id="TfClothingType" GridPane.columnIndex="1"/>
                         <Label text="Clothing Size : " GridPane.ColumnIndex="0" GridPane.rowIndex="1"/>
-                        <TextField fx:id="tfClothingSize" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <TextField fx:id="TfClothingSize" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                         <Label text="Color : " GridPane.ColumnIndex="0" GridPane.rowIndex="2"/>
                         <TextField fx:id="TfClothingColor" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                         <Label text="Material : " GridPane.ColumnIndex="0" GridPane.rowIndex="3"/>

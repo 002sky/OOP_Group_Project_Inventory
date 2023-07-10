@@ -16,8 +16,6 @@ public class inventoryApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
 
-
-
         stage.setTitle("Inventory Management System");
         stage.setScene(scene);
         stage.setMaximized(true);
