@@ -11,8 +11,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 
@@ -34,6 +36,8 @@ public class AddProductPane implements Initializable {
 
     @FXML
     private DatePicker DpExpiryDate;
+
+    private Stage aNewStage;
 
 
     @Override
@@ -71,16 +75,37 @@ public class AddProductPane implements Initializable {
     }
 
 
-    public boolean validation() {
+    public boolean validation(MouseEvent event) throws IOException {
         boolean validate = true;
         if (!productBox.getSelectionModel().isEmpty()) {
-
+            String errorMessage = "";
             if (TfProductID.getText().isEmpty()) {
-                System.out.println("product ID is empty");
+
+//                System.out.println("product ID is empty");
+                errorMessage = "product ID is empty";
+
+
+                ErrorMessageWindow errorMessageWindow = new ErrorMessageWindow(errorMessage);
+
+
+                aNewStage = errorMessageWindow.getTheStage();
+                aNewStage.show();
                 validate = false;
+
+
             }
             if (TfProductName.getText().isEmpty()) {
-                System.out.println("product name is empty");
+//                System.out.println("product name is empty");
+
+                errorMessage = "product name is empty";
+
+
+                ErrorMessageWindow errorMessageWindow = new ErrorMessageWindow(errorMessage);
+
+
+                aNewStage = errorMessageWindow.getTheStage();
+                aNewStage.show();
+                validate = false;
                 validate = false;
             }
             if (TfUnitPrice.getText().isEmpty()) {
@@ -139,17 +164,17 @@ public class AddProductPane implements Initializable {
     }
 
 
-    public void SubmitToDatabase(MouseEvent event) {
+    public void SubmitToDatabase(MouseEvent event) throws IOException {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
 
-        boolean check = validation();
+        boolean check = validation(event);
 
         try {
             Connection connection = DriverManager.getConnection(url);
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
             if (check) {
-                String sqlProduct = "INSERT INTO Product (ProductID, ProductName, UnitPrice, SellingPrice, ProductBrand) VALUES ('" + TfProductID.getText() + "', '" + TfProductName.getText() + "', '"  + TfUnitPrice.getText() + "', '" + TfSellingPrice.getText() + "', '" + TfProductBrand.getText() + "')";
+                String sqlProduct = "INSERT INTO Product (ProductID, ProductName, UnitPrice, SellingPrice, ProductBrand) VALUES ('" + TfProductID.getText() + "', '" + TfProductName.getText() + "', '" + TfUnitPrice.getText() + "', '" + TfSellingPrice.getText() + "', '" + TfProductBrand.getText() + "')";
                 String sql = "";
 
                 Statement statement = connection.createStatement();
