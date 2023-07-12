@@ -4,19 +4,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.oop_group_project_inventory.ViewProduct">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.ViewProduct">
     <children>
         <VBox alignment="CENTER" layoutX="14.0" layoutY="14.0" spacing="30.0">
             <padding>
-                <Insets bottom="100.0" left="100.0" right="100.0" top="100.0"/>
+                <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
             </padding>
-            <Label text="Product List"/>
-            <TextField fx:id="searchField" promptText="Search by ID"/>
-            <TableView>
+            <Label text="Product List" />
+            <ComboBox fx:id="CbViewProductType"></ComboBox>
+            <TextField fx:id="searchField" promptText="Search by ID" />
+            <Pane>
+                <children>
 
-            </TableView>
+
+                    <TableView fx:id="GroceryTableView"  visible="false">
+
+                    </TableView>
+                    <TableView fx:id="ElectronicTableView" visible="false">
+
+                    </TableView>
+
+                    <TableView fx:id="ClothingTableView" visible="false">
+
+
+                    </TableView>
+                </children>
+            </Pane>
+
 
         </VBox>
     </children>
