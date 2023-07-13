@@ -46,8 +46,10 @@ public class Login implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(inventoryApplication.class.getResource("mainPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        stageOftheLabel.setMaximized(true);
 
         stageOftheLabel.setScene(scene);
+        stageOftheLabel.setMaximized(true);
 
     }
 
