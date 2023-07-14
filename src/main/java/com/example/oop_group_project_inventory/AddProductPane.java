@@ -43,6 +43,7 @@ public class AddProductPane implements Initializable {
         String productType[] = {"Grocery", "Electronic", "Clothing"};
 
         productBox.setItems(FXCollections.observableArrayList(productType));
+
         resetLBLErrMsg();
 
         productBox.valueProperty().addListener(new ChangeListener() {

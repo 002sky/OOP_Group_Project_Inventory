@@ -4,27 +4,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="mainPage" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.MainPage">
+<BorderPane fx:id="mainPage" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.MainPage">
     <left>
         <Accordion prefHeight="400.0" prefWidth="119.0" BorderPane.alignment="CENTER">
+
             <panes>
+
                 <TitledPane prefHeight="200.0" prefWidth="200.0" text="Product">
                     <content>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                             <children>
                                 <SplitPane dividerPositions="0.5, 0.5, 0.5" orientation="VERTICAL">
                                     <items>
-                                        <Label layoutX="40.0" layoutY="35.0" prefHeight="55.0" prefWidth="521.0" styleClass="lbl-success" text="Inventory Management System" textOverrun="CLIP">
 
-                                        </Label>
-                                        <Button mnemonicParsing="false" onMouseClicked="#LoadAddProduct" prefHeight="25.0" prefWidth="106.0" text="Add" />
-                                        <Button mnemonicParsing="false" onMouseClicked="#LoadViewProduct" prefHeight="25.0" prefWidth="110.0" text="View" />
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Button" />
+
+                                        <Button mnemonicParsing="false" onMouseClicked="#LoadAddProduct"
+                                                prefHeight="25.0" prefWidth="106.0" text="Add"/>
+                                        <Button mnemonicParsing="false" onMouseClicked="#LoadViewProduct"
+                                                prefHeight="25.0" prefWidth="110.0" text="View"/>
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0"
+                                                text="Button"/>
                                     </items>
                                 </SplitPane>
                             </children>
                             <padding>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                             </padding>
                         </VBox>
                     </content>
@@ -35,14 +40,16 @@
                             <children>
                                 <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
                                     <items>
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Add" />
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Button" />
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Button" />
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Add"/>
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0"
+                                                text="Button"/>
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0"
+                                                text="Button"/>
                                     </items>
                                 </SplitPane>
                             </children>
                             <padding>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                             </padding>
                         </VBox>
                     </content>
@@ -53,14 +60,16 @@
                             <children>
                                 <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
                                     <items>
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Add" />
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Button" />
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Button" />
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Add"/>
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0"
+                                                text="Button"/>
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0"
+                                                text="Button"/>
                                     </items>
                                 </SplitPane>
                             </children>
                             <padding>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                             </padding>
                         </VBox>
                     </content>
@@ -68,7 +77,7 @@
             </panes>
         </Accordion>
     </left>
-   <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="ContentPane"/>
-   </center>
+    <center>
+        <ScrollPane BorderPane.alignment="CENTER" fx:id="ContentPane"/>
+    </center>
 </BorderPane>
