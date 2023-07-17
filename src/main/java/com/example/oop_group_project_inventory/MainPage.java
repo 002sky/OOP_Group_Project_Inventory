@@ -8,7 +8,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -21,16 +21,15 @@ public class MainPage implements Initializable {
     private ScrollPane ContentPane;
     @FXML
     private BorderPane mainPage;
+
     public HashMap<String,Pane> ContentMap = new HashMap<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
         try {
             ContentMap.put("AddProduct",FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddProductPane.fxml"))));
             ContentMap.put("ViewProduct",FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("ViewProduct.fxml"))));
-            ContentMap.put("UpdateProduct",FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("UpdateProductPane.fxml"))));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -49,8 +48,5 @@ public class MainPage implements Initializable {
 
     public void LoadViewProduct(MouseEvent event) {
         ContentPane.setContent(activate("ViewProduct"));
-    }
-    public void LoadUpdateProduct(MouseEvent event) {
-        ContentPane.setContent(activate("UpdateProduct"));
     }
 }
