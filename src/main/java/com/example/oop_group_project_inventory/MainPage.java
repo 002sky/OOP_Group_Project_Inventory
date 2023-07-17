@@ -30,6 +30,7 @@ public class MainPage implements Initializable {
         try {
             ContentMap.put("AddProduct",FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddProductPane.fxml"))));
             ContentMap.put("ViewProduct",FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("ViewProduct.fxml"))));
+            ContentMap.put("UpdateProduct",FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("UpdateProductPane.fxml"))));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -48,5 +49,8 @@ public class MainPage implements Initializable {
 
     public void LoadViewProduct(MouseEvent event) {
         ContentPane.setContent(activate("ViewProduct"));
+    }
+
+    public void LoadUpdateProduct(MouseEvent event) {ContentPane.setContent(activate("UpdateProduct"));
     }
 }
