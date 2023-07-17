@@ -23,6 +23,8 @@ public class Clothing extends Product {
         this.material = material;
     }
 
+
+
     public String getClothingType() {
         return clothingType;
     }

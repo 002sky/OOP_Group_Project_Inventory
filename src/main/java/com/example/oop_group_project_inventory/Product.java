@@ -3,7 +3,7 @@ package com.example.oop_group_project_inventory;
 import java.sql.*;
 import java.util.Date;
 
-public class Product {
+public  class Product {
     private String productID;
     private String productName;
     private double unitPrice;
@@ -68,8 +68,6 @@ public class Product {
     public boolean isProductStatus() {
         return productStatus;
     }
-
-
 
 
 

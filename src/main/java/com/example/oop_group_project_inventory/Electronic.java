@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Electronic extends Product {
+public  class Electronic extends Product {
     private String color;
     private String model;
 

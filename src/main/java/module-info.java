@@ -1,5 +1,6 @@
 module com.example.oop_group_project_inventory {
     requires javafx.controls;
+    requires javafx.base;
     requires javafx.fxml;
     requires javafx.web;
 
@@ -12,6 +13,8 @@ module com.example.oop_group_project_inventory {
     requires ucanaccess;
 
 
+
     opens com.example.oop_group_project_inventory to javafx.fxml;
+
     exports com.example.oop_group_project_inventory;
 }

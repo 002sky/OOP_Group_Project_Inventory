@@ -47,9 +47,7 @@ public class Login implements Initializable {
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stageOftheLabel.setMaximized(true);
-
         stageOftheLabel.setScene(scene);
-        stageOftheLabel.setMaximized(true);
 
     }
 

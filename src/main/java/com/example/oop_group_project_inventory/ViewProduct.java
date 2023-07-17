@@ -158,25 +158,18 @@ public class ViewProduct implements Initializable {
                     ClothingTableView.setVisible(false);
                     ElectronicTableView.setVisible(false);
                 }
-
-
             }
         });
-
     }
 
-    public void buildData(String ProductType) {
 
+    public void buildData(String ProductType) {
 
         try {
             if (ProductType.equalsIgnoreCase("Grocery")) {
                 GroceryData = FXCollections.observableArrayList();
-
                 GroceryData.addAll(new Grocery().loadFromDatabase());
-
-
                 GroceryTableView.setItems(GroceryData);
-
 
             } else if (ProductType.equalsIgnoreCase("Electronic")) {
                 ElectronicData = FXCollections.observableArrayList();

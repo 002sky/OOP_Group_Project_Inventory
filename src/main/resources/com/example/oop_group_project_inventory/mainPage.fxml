@@ -19,7 +19,7 @@
                                         </Label>
                                         <Button mnemonicParsing="false" onMouseClicked="#LoadAddProduct" prefHeight="25.0" prefWidth="106.0" text="Add" />
                                         <Button mnemonicParsing="false" onMouseClicked="#LoadViewProduct" prefHeight="25.0" prefWidth="110.0" text="View" />
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Button" />
+                                        <Button mnemonicParsing="false" onMouseClicked="#LoadUpdateProduct" prefHeight="25.0" prefWidth="108.0" text="Update" />
                                     </items>
                                 </SplitPane>
                             </children>
@@ -69,6 +69,6 @@
         </Accordion>
     </left>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="ContentPane"/>
+      <ScrollPane fx:id="ContentPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
