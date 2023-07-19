@@ -58,8 +58,8 @@ public class ViewProduct implements Initializable {
         groceryTableCloumn[5] = new TableColumn<>("Product Brand");
         groceryTableCloumn[5].setCellValueFactory(new PropertyValueFactory<Grocery, String>("productBrand"));
 
-        groceryTableCloumn[6] = new TableColumn<>("Expiry Date");
-        groceryTableCloumn[6].setCellValueFactory(new PropertyValueFactory<Grocery, String>("expiry_date"));
+        groceryTableCloumn[6] = new TableColumn<>("category");
+        groceryTableCloumn[6].setCellValueFactory(new PropertyValueFactory<Grocery, String>("category"));
 
 
         electronicTableCloumn[0] = new TableColumn<>("Product ID");
@@ -140,7 +140,6 @@ public class ViewProduct implements Initializable {
                     buildData(t1.toString());
                     GroceryTableView.setVisible(true);
                     ElectronicTableView.setVisible(false);
-
                     ClothingTableView.setVisible(false);
 
                 } else if (t1.toString().equalsIgnoreCase("Electronic")) {
@@ -173,16 +172,13 @@ public class ViewProduct implements Initializable {
 
             } else if (ProductType.equalsIgnoreCase("Electronic")) {
                 ElectronicData = FXCollections.observableArrayList();
-
                 ElectronicData.addAll(new Electronic().loadFromDatabase());
-
 
                 ElectronicTableView.setItems(ElectronicData);
             } else if (ProductType.equalsIgnoreCase("Clothing")) {
                 ClothingData = FXCollections.observableArrayList();
 
                 ClothingData.addAll(new Clothing().loadFromDatabase());
-
 
                 ClothingTableView.setItems(ClothingData);
             }

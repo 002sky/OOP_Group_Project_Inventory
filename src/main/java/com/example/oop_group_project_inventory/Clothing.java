@@ -7,7 +7,7 @@ import java.util.Date;
 public class Clothing extends Product {
 
     private String clothingType;
-    private char clothingSize;
+    private String clothingSize;
     private String color;
     private String material;
 
@@ -15,7 +15,7 @@ public class Clothing extends Product {
 
     }
 
-    protected Clothing(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus, String clothingType, char clothingSize, String color, String material) {
+    protected Clothing(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus, String clothingType, String clothingSize, String color, String material) {
         super(productID,productName,unitPrice,sellingPrice,productBrand,productStatus);
         this.clothingType = clothingType;
         this.clothingSize = clothingSize;
@@ -29,7 +29,7 @@ public class Clothing extends Product {
         return clothingType;
     }
 
-    public char getClothingSize() {
+    public String getClothingSize() {
         return clothingSize;
     }
 
@@ -44,7 +44,7 @@ public class Clothing extends Product {
         this.clothingType = clothingType;
     }
 
-    public void setClothingSize(char clothingSize) {
+    public void setClothingSize(String clothingSize) {
         this.clothingSize = clothingSize;
     }
 
@@ -75,7 +75,7 @@ public class Clothing extends Product {
                 String brand = result.getString("Product.productBrand");
                 boolean status = result.getBoolean("Product.productStatus");
                 String type = result.getString("clothingType");
-                char size = result.getString("clothingSize").charAt(0);
+                String size = result.getString("clothingSize");
                 String color = result.getString("color");
                 String material = result.getString("material");
 

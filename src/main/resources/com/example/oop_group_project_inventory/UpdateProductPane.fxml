@@ -1,83 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane  xmlns="http://javafx.com/javafx"
-       xmlns:fx="http://javafx.com/fxml"
-       fx:controller="com.example.oop_group_project_inventory.UpdateProductPane"
-       prefHeight="400.0" prefWidth="600.0">
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.UpdateProductPane">
 
     <children>
-        <Label layoutX="14.0" layoutY="14.0" text="Edit Product"/>
-        <GridPane layoutX="8.0" layoutY="35.0" prefHeight="210.0" prefWidth="410.0">
+        <Label layoutX="14.0" layoutY="14.0" text="Edit Product" />
+        <GridPane layoutX="8.0" layoutY="35.0" prefHeight="210.0" prefWidth="410.0" fx:id="mainGP">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
 
             <children>
-                <Label prefHeight="17.0" prefWidth="136.0" text="Product ID:" GridPane.rowIndex="1"/>
-                <Label text="Product Name: " GridPane.rowIndex="2"/>
-                <Label text="Unit Price: " GridPane.rowIndex="3"/>
-                <Label layoutX="10.0" layoutY="77.0" text="Selling Price: " GridPane.rowIndex="4"/>
-                <Label layoutX="10.0" layoutY="17.0" text="Product Status: " GridPane.rowIndex="5"/>
-                <Label text="Product Brand" GridPane.rowIndex="6"/>
-                <Label layoutX="10.0" layoutY="167.0" text="Product Type :"/>
+                <Label prefHeight="17.0" prefWidth="136.0" text="Product ID:" />
+                <Label text="Product Name: " GridPane.rowIndex="2" />
+                <Label text="Unit Price: " GridPane.rowIndex="3" />
+                <Label layoutX="10.0" layoutY="77.0" text="Selling Price: " GridPane.rowIndex="4" />
+                <Label layoutX="10.0" layoutY="17.0" text="Product Status: " GridPane.rowIndex="5" />
+                <Label text="Product Brand" GridPane.rowIndex="6" />
+                <Label layoutX="10.0" layoutY="167.0" text="Product Type :" GridPane.rowIndex="1" />
 
 
-                <ComboBox fx:id="productBox" prefHeight="25.0" prefWidth="193.0" GridPane.columnIndex="1"/>
-                <Label fx:id="lblproductBoxErrMsg" GridPane.columnIndex="2"/>
+                <Label fx:id="productBox" prefHeight="25.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label fx:id="lblproductBoxErrMsg" GridPane.columnIndex="2" />
 
-                <CheckBox fx:id="CbProductStatus" text="Activate Product" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-                <TextField fx:id="TfProductID" GridPane.columnIndex="1" GridPane.rowIndex="1" onKeyPressed="#suggestion"/>
-                <Label fx:id="lblproductIDErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                <CheckBox fx:id="CbProductStatus" text="Activate Product" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <TextField fx:id="TfProductID" GridPane.columnIndex="1"  />
+                <Label fx:id="lblproductIDErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1" />
 
-                <TextField fx:id="TfProductName" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                <Label fx:id="lblProductNameErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                <TextField fx:id="TfProductName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label fx:id="lblProductNameErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="2" />
 
-                <TextField fx:id="TfUnitPrice" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                <Label fx:id="lblUnitPriceErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                <TextField fx:id="TfUnitPrice" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label fx:id="lblUnitPriceErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 
-                <TextField fx:id="TfSellingPrice" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-                <Label fx:id="lblSellingPrice" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                <TextField fx:id="TfSellingPrice" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label fx:id="lblSellingPrice" GridPane.columnIndex="2" GridPane.rowIndex="4" />
 
-                <TextField  fx:id="TfProductBrand" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
-                <Label fx:id="lblproductBrandErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
-
+                <TextField fx:id="TfProductBrand" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <Label fx:id="lblproductBrandErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="6" />
 
             </children>
         </GridPane>
-        <AnchorPane layoutX="318.0" layoutY="39.0" prefHeight="202.0" prefWidth="267.0">
+        <AnchorPane layoutX="340.0" layoutY="43.0" prefHeight="202.0" prefWidth="267.0">
             <children>
                 <GridPane fx:id="Grocery" layoutX="16.0" layoutY="27.0" prefWidth="235.0" visible="false">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="112.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="115.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="112.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="115.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Expiry Date: " GridPane.columnIndex="3"/>
-                        <DatePicker fx:id="DpExpiryDate" GridPane.columnIndex="4"/>
-                        <Label fx:id="lblExpiryDateErrMsg" GridPane.columnIndex="5" />
-
+                        <Label text="Category: " GridPane.columnIndex="0" />
+                        <TextField fx:id="TfCategory" GridPane.columnIndex="1" />
+                        <Label fx:id="lblCategory" GridPane.columnIndex="2" />
                     </children>
                 </GridPane>
             </children>
@@ -85,22 +77,22 @@
             <children>
                 <GridPane fx:id="Electronic" layoutX="16.0" layoutY="27.0" prefWidth="235.0" visible="false">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="112.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="115.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="112.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="115.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Color: "/>
-                        <TextField fx:id="TfElectronicColor" GridPane.columnIndex="1"/>
+                        <Label text="Color: " />
+                        <TextField fx:id="TfElectronicColor" GridPane.columnIndex="1" />
                         <Label fx:id="lblElectronicColorErrMsg" GridPane.columnIndex="2" />
 
-                        <Label text="Model: " GridPane.ColumnIndex="0" GridPane.rowIndex="1"/>
-                        <TextField fx:id="TfModel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                        <Label fx:id="lblModelErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <Label text="Model: " GridPane.ColumnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="TfModel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lblModelErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1" />
 
                     </children>
                 </GridPane>
@@ -109,38 +101,38 @@
             <children>
                 <GridPane fx:id="Clothing" layoutX="16.0" layoutY="27.0" prefWidth="235.0" visible="false">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="112.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="115.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="112.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="115.0" />
+                  <ColumnConstraints />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints />
                     </rowConstraints>
                     <children>
-                        <Label text="Clothing Type: "/>
-                        <TextField fx:id="TfClothingType" GridPane.columnIndex="1"/>
+                        <Label text="Clothing Type: " />
+                        <TextField fx:id="TfClothingType" GridPane.columnIndex="1" />
                         <Label fx:id="lblClothingTypeErrMsg" GridPane.columnIndex="2" />
 
-                        <Label text="Clothing Size: " GridPane.ColumnIndex="0" GridPane.rowIndex="1"/>
-                        <TextField fx:id="TfClothingSize" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                        <Label fx:id="lblClothingSizeErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <Label text="Clothing Size: " GridPane.ColumnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="TfClothingSize" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lblClothingSizeErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1" />
 
-                        <Label text="Color: " GridPane.ColumnIndex="0" GridPane.rowIndex="2"/>
-                        <TextField fx:id="TfClothingColor" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                        <Label fx:id="lblClothingColorErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                        <Label text="Color: " GridPane.ColumnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="TfClothingColor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lblClothingColorErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="2" />
 
-                        <Label text="Material: " GridPane.ColumnIndex="0" GridPane.rowIndex="3"/>
-                        <TextField fx:id="TfClothingMaterial" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                        <Label fx:id="lblClothingMaterialErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                        <Label text="Material: " GridPane.ColumnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="TfClothingMaterial" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="lblClothingMaterialErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 
                     </children>
                 </GridPane>
             </children>
         </AnchorPane>
-        <Button layoutX="209.0" layoutY="255.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0"
-                text="Update" onMouseClicked="#UpdateProduct"/>
+        <Button layoutX="209.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#UpdateProduct" prefHeight="25.0" prefWidth="109.0" text="Update" />
     </children>
 
 

@@ -33,10 +33,10 @@ public class AddProductPane implements Initializable {
     private CheckBox CbProductStatus;
 
     @FXML
-    private DatePicker DpExpiryDate;
+    private TextField TfCategory;
 
     @FXML
-    private Label lblproductBoxErrMsg, lblproductIDErrMsg, lblProductNameErrMsg, lblUnitPriceErrMsg, lblSellingPrice, lblproductBrandErrMsg, lblElectronicColorErrMsg, lblModelErrMsg, lblExpiryDateErrMsg, lblClothingTypeErrMsg, lblClothingSizeErrMsg, lblClothingColorErrMsg, lblClothingMaterialErrMsg;
+    private Label lblproductBoxErrMsg, lblproductIDErrMsg, lblProductNameErrMsg, lblUnitPriceErrMsg, lblSellingPrice, lblproductBrandErrMsg, lblElectronicColorErrMsg, lblModelErrMsg, lblCategory, lblClothingTypeErrMsg, lblClothingSizeErrMsg, lblClothingColorErrMsg, lblClothingMaterialErrMsg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,7 +83,7 @@ public class AddProductPane implements Initializable {
         lblproductBrandErrMsg.setText("");
         lblElectronicColorErrMsg.setText("");
         lblModelErrMsg.setText("");
-        lblExpiryDateErrMsg.setText("");
+        lblCategory.setText("");
         lblClothingTypeErrMsg.setText("");
         lblClothingSizeErrMsg.setText("");
         lblClothingColorErrMsg.setText("");
@@ -96,7 +96,7 @@ public class AddProductPane implements Initializable {
         lblproductBrandErrMsg.setTextFill(Color.color(1, 0, 0));
         lblElectronicColorErrMsg.setTextFill(Color.color(1, 0, 0));
         lblModelErrMsg.setTextFill(Color.color(1, 0, 0));
-        lblExpiryDateErrMsg.setTextFill(Color.color(1, 0, 0));
+        lblCategory.setTextFill(Color.color(1, 0, 0));
         lblClothingTypeErrMsg.setTextFill(Color.color(1, 0, 0));
         lblClothingSizeErrMsg.setTextFill(Color.color(1, 0, 0));
         lblClothingColorErrMsg.setTextFill(Color.color(1, 0, 0));
@@ -203,14 +203,14 @@ public class AddProductPane implements Initializable {
             }
 
             if (productBox.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Grocery")) {
-                if (DpExpiryDate.getValue() == null) {
+                if (TfCategory.getText() == null) {
 //                    System.out.println("expiry date is empty");
                     errorMessage = "Expiry date is empty";
-                    lblExpiryDateErrMsg.setText(errorMessage);
+                    lblCategory.setText(errorMessage);
                     validate = false;
                 }
                 else {
-                    lblExpiryDateErrMsg.setText("");
+                    lblCategory.setText("");
                 }
             }
 
@@ -267,11 +267,12 @@ public class AddProductPane implements Initializable {
                     if (productBox.getValue().toString().equalsIgnoreCase("Clothing")) {
                         sql = "INSERT INTO Clothing (ProductID, color, material, clothingSize,clothingType) VALUES ('" + TfProductID.getText() + "', '" + TfClothingColor.getText() + "', '" + TfClothingMaterial.getText() + "', '" + TfClothingSize.getText() + "', '" + TfClothingType.getText() + "')";
                     } else if (productBox.getValue().toString().equalsIgnoreCase("Grocery")) {
-                        sql = "INSERT INTO Grocery (ProductID, expiry_date) VALUES ('" + TfProductID.getText() + "', '" + DpExpiryDate.getValue() + "')";
+                        sql = "INSERT INTO Grocery (ProductID, Category) VALUES ('" + TfProductID.getText() + "', '" + TfCategory.getText() + "')";
                     } else if (productBox.getValue().toString().equalsIgnoreCase("Electronic")) {
                         sql = "INSERT INTO Electronic (ProductID, Color, models) VALUES ('" + TfProductID.getText() + "', '" + TfElectronicColor.getText() + "', '" + TfModel.getText() + "')";
                     }
 
+                    statement.executeUpdate(sql);
                     statement.executeUpdate(sql);
                 }
             }

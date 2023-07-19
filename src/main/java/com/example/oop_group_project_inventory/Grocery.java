@@ -5,24 +5,24 @@ import java.util.Date;
 import java.sql.*;
 
 public class Grocery extends Product {
-    private Date expiry_date;
+    private String category;
 
     protected Grocery() {
 
     }
 
-    protected Grocery(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus, Date expiry_date) {
+    protected Grocery(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus, String category) {
         super(productID,productName,unitPrice,sellingPrice,productBrand, productStatus);
-        this.expiry_date = expiry_date;
+        this.category = category;
 
     }
 
-    public Date getExpiry_date() {
-        return expiry_date;
+    public String getCategory() {
+        return category;
     }
 
-    public void setExpiry_date(Date expiry_date) {
-        this.expiry_date = expiry_date;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public ArrayList<Grocery> loadFromDatabase() {
@@ -38,7 +38,7 @@ public class Grocery extends Product {
 
             while (result.next()) {
                 String id = result.getString("productID");
-                Date expiry = result.getDate("expiry_date");
+                String category = result.getString("category");
                 String name = result.getString("Product.productName");
                 double unitPrice = result.getDouble("Product.unitPrice");
                 double sellingPrice = result.getDouble("Product.sellingPrice");
@@ -46,7 +46,7 @@ public class Grocery extends Product {
                 boolean status = result.getBoolean("Product.productStatus");
 
 
-                Grocery a = new Grocery(id,name,unitPrice,sellingPrice,brand,status,expiry);
+                Grocery a = new Grocery(id,name,unitPrice,sellingPrice,brand,status,category);
                 GroceryList.add(a);
 
                 System.out.println(a.getProductID() + " " + a.getProductName() + " " + a.getSellingPrice());

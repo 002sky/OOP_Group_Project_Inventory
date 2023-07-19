@@ -7,7 +7,6 @@ import java.util.Date;
 public  class Electronic extends Product {
     private String color;
     private String model;
-
     protected Electronic(){
 
     }
@@ -56,10 +55,8 @@ public  class Electronic extends Product {
                 String brand = result.getString("Product.productBrand");
                 boolean status = result.getBoolean("Product.productStatus");
 
-
                 Electronic a = new Electronic(id,name,unitPrice,sellingPrice,brand,status,color,models);
                 electronicList.add(a);
-
 
                 System.out.println(a.getProductID() + " " + a.getProductName() + " " + a.getSellingPrice());
             }
@@ -71,5 +68,11 @@ public  class Electronic extends Product {
         }
 
         return electronicList;
+    }
+    public void updateProduct(String id, String name,double unitPrice,double sellingPrice,String brand, String status,String color,String models){
+
+
+
+
     }
 }

@@ -18,12 +18,12 @@ import java.util.ResourceBundle;
 public class Login implements Initializable {
     @FXML
     private Label lbPasswordError;
-
     @FXML
     private TextField tfPassword;
-
     @FXML
     private Tooltip toolTipTxtPassword;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,12 +44,10 @@ public class Login implements Initializable {
 
         Stage stageOftheLabel = (Stage) lbPasswordError.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(inventoryApplication.class.getResource("mainPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-        stageOftheLabel.setMaximized(true);
-
         stageOftheLabel.setScene(scene);
-        stageOftheLabel.setMaximized(true);
+//        stageOftheLabel.setMaximized(true);
 
     }
 
@@ -61,6 +59,9 @@ public class Login implements Initializable {
 //
 //        }
 //    }
+
+
+
 
 
 }
