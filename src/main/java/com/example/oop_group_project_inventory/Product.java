@@ -1,9 +1,9 @@
 package com.example.oop_group_project_inventory;
 
 import java.sql.*;
-import java.util.Date;
 
-public  class Product {
+
+public abstract class Product {
     private String productID;
     private String productName;
     private double unitPrice;
@@ -69,6 +69,41 @@ public  class Product {
         return productStatus;
     }
 
+
+    public int updateProduct(Product product){
+        String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
+        try {
+            Connection connection = DriverManager.getConnection(url);
+
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+            String sql = "UPDATE Product SET  productName = ?, unitPrice = ?, sellingPrice = ?, productBrand = ?, productStatus = ? WHERE productID = ?";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, product.getProductName());
+            statement.setDouble(2, product.getUnitPrice());
+            statement.setDouble(3, product.getSellingPrice());
+            statement.setString(4, product.getProductBrand());
+            statement.setBoolean(5, product.isProductStatus());
+            statement.setString(6, product.getProductID());
+
+            int result = statement.executeUpdate();
+
+            if (result >= 1) {
+                return result;
+            }
+            //@TODO if there is an error return 0
+
+
+
+    }catch (SQLException ex){
+        ex.printStackTrace();
+    }catch (ClassNotFoundException e) {
+        throw new RuntimeException(e);
+    }
+        return 0;
+    }
 
 
 }

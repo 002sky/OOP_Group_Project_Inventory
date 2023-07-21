@@ -1,7 +1,6 @@
 package com.example.oop_group_project_inventory;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.sql.*;
 
 public class Grocery extends Product {
@@ -59,6 +58,34 @@ public class Grocery extends Product {
             throw new RuntimeException(e);
         }
         return GroceryList;
+    }
+
+    public void updateProduct(Grocery grocery) {
+        String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
+        try {
+            Connection connection = DriverManager.getConnection(url);
+            int result = super.updateProduct(grocery);
+
+            if (result >= 1) {
+
+                String newSql = "UPDATE Grocery SET category = ? WHERE productID = ?";
+
+                PreparedStatement newStatement = connection.prepareStatement(newSql);
+
+                newStatement.setString(1, grocery.getCategory());
+                newStatement.setString(2, grocery.getProductID());
+
+                newStatement.executeUpdate();
+
+                System.out.println("Grocery Updated");
+            }
+
+            //@todo if there is an error return an error message to the user
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
 

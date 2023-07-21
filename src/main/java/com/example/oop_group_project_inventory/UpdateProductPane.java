@@ -2,23 +2,12 @@ package com.example.oop_group_project_inventory;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import net.ucanaccess.console.Main;
-import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
-
-
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 
@@ -30,47 +19,45 @@ public class UpdateProductPane implements Initializable {
     private Label productBox;
 
     @FXML
+    private CheckBox CbProductStatus;
+    @FXML
     private GridPane mainGP;
     @FXML
     private TextField TfProductID, TfProductName, TfUnitPrice, TfSellingPrice, TfProductBrand, TfElectronicColor, TfModel, TfClothingType, TfClothingSize, TfClothingColor, TfClothingMaterial, TfCategory;
     public ArrayList<String> autoComplete = new ArrayList<>();
     public String currentItem;
 
+
+
     public void UpdateProduct(MouseEvent event) {
-//        MainPage.productArrayList.forEach((n) -> {
-//            if (n.getProductID().equalsIgnoreCase(currentItem)) {
-//                System.out.println(n.getProductID());
-//                n.setProductID(TfProductID.getText());
-//                System.out.println(n.getProductID());
-//
-//
-//
-//            }
-//        });
 
         if(checkExitProduct(currentItem) != -1){
-            MainPage.productArrayList.get(checkExitProduct(currentItem));
-            MainPage.productArrayList.get(checkExitProduct(currentItem)).setProductID(TfProductID.getText());
+
             MainPage.productArrayList.get(checkExitProduct(currentItem)).setProductName(TfProductName.getText());
             MainPage.productArrayList.get(checkExitProduct(currentItem)).setUnitPrice(Double.parseDouble(TfUnitPrice.getText()));
             MainPage.productArrayList.get(checkExitProduct(currentItem)).setSellingPrice(Double.parseDouble(TfSellingPrice.getText()));
             MainPage.productArrayList.get(checkExitProduct(currentItem)).setProductBrand(TfProductBrand.getText());
+            MainPage.productArrayList.get(checkExitProduct(currentItem)).setProductStatus(CbProductStatus.isSelected());
             if(MainPage.productArrayList.get(checkExitProduct(currentItem)).getClass().equals(Electronic.class)){
                 Electronic e = (Electronic) MainPage.productArrayList.get(checkExitProduct(currentItem));
                 e.setColor(TfElectronicColor.getText());
                 e.setModel(TfModel.getText());
-                
-
+                e.updateProduct(e);
 
             }else if(MainPage.productArrayList.get(checkExitProduct(currentItem)).getClass().equals(Grocery.class)){
                 Grocery g = (Grocery) MainPage.productArrayList.get(checkExitProduct(currentItem));
                 g.setCategory(TfCategory.getText());
+                g.updateProduct(g);
+
             }else if(MainPage.productArrayList.get(checkExitProduct(currentItem)).getClass().equals(Clothing.class)){
+
                 Clothing c = (Clothing) MainPage.productArrayList.get(checkExitProduct(currentItem));
                 c.setColor(TfClothingColor.getText());
                 c.setMaterial(TfClothingMaterial.getText());
                 c.setClothingSize(TfClothingSize.getText());
                 c.setClothingType(TfClothingType.getText());
+
+                c.updateProduct(c);
             }
 
 
@@ -80,12 +67,12 @@ public class UpdateProductPane implements Initializable {
         }
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         MainPage.productArrayList.forEach((n) -> autoComplete.add(n.getProductID()));
         TextFields.bindAutoCompletion(TfProductID, autoComplete);
-
 
         TfProductID.textProperty().addListener((observable, oldValue, newValue) -> {
             if(checkExitProduct(newValue) != -1){
@@ -96,6 +83,7 @@ public class UpdateProductPane implements Initializable {
                 TfUnitPrice.setText(String.valueOf(tmp.getUnitPrice()));
                 TfSellingPrice.setText(String.valueOf(tmp.getSellingPrice()));
                 TfProductBrand.setText(tmp.getProductBrand());
+                CbProductStatus.setSelected(tmp.isProductStatus());
 
                 if (tmp.getClass().equals(Electronic.class)) {
                     Electronic e = (Electronic) tmp;
@@ -135,7 +123,6 @@ public class UpdateProductPane implements Initializable {
                 a[0] = MainPage.productArrayList.indexOf(n);
             }
         });
-
 
         return a[0];
     }

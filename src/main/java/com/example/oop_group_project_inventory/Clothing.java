@@ -2,7 +2,7 @@ package com.example.oop_group_project_inventory;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class Clothing extends Product {
 
@@ -95,4 +95,39 @@ public class Clothing extends Product {
         return ClothingList;
 
     }
+
+    public void updateProduct(Clothing clothing) {
+        String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
+        try {
+            Connection connection = DriverManager.getConnection(url);
+
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+            int result = super.updateProduct(clothing);
+
+            if (result >= 1) {
+
+                String newSql = "UPDATE Clothing SET  clothingType = ?, clothingSize = ?, color = ?, material = ? WHERE productID = ?";
+                PreparedStatement newStatement = connection.prepareStatement(newSql);
+
+                newStatement.setString(1, clothing.getClothingType());
+                newStatement.setString(2, clothing.getClothingSize());
+                newStatement.setString(3, clothing.getColor());
+                newStatement.setString(4, clothing.getMaterial());
+                newStatement.setString(5, clothing.getProductID());
+
+                newStatement.executeUpdate();
+
+                System.out.println("Clothing Updated");
+            }
+            //@todo if there is an error return an error message to the user
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

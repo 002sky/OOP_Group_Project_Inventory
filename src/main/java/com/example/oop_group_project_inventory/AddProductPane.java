@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+
 
 
 import java.io.IOException;
@@ -271,9 +271,8 @@ public class AddProductPane implements Initializable {
                     } else if (productBox.getValue().toString().equalsIgnoreCase("Electronic")) {
                         sql = "INSERT INTO Electronic (ProductID, Color, models) VALUES ('" + TfProductID.getText() + "', '" + TfElectronicColor.getText() + "', '" + TfModel.getText() + "')";
                     }
+                    statement.executeUpdate(sql);
 
-                    statement.executeUpdate(sql);
-                    statement.executeUpdate(sql);
                 }
             }
 
