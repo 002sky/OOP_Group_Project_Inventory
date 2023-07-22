@@ -1,0 +1,32 @@
+.scroll-pane-gb {
+    -fx-background-image: url('resources/background.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.linear-grad {
+    -fx-background-color: linear-gradient(to bottom left, #A868A0, #2D75E8);
+}
+
+.button {
+    -fx-background-color: #2262C6;
+    -fx-background-radius: 10;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand; /* Add a hand cursor on hover */
+    -fx-transition: all 0.3s; /* Add a transition effect for all properties with 0.3 seconds duration */
+}
+
+.button:hover {
+    -fx-background-color: #80AFF5;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+.button:pressed {
+    -fx-text-fill: #80AFF5;
+}
+
+.button:active {
+    -fx-text-fill: #80AFF5;
+}
