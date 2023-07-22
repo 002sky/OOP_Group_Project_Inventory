@@ -9,10 +9,13 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.util.converter.NumberStringConverter;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 
@@ -24,16 +27,16 @@ public class AddProductPane implements Initializable {
     private GridPane Grocery, Electronic, Clothing;
 
     @FXML
-    private TextField TfProductID, TfProductName, TfUnitPrice, TfSellingPrice, TfProductBrand, TfElectronicColor, TfModel, TfClothingType, TfClothingSize, TfClothingColor, TfClothingMaterial;
+    private TextField TfCategory, TfProductID, TfProductName, TfUnitPrice, TfSellingPrice, TfProductBrand, TfElectronicColor, TfModel, TfClothingType, TfClothingSize, TfClothingColor, TfClothingMaterial;
 
     @FXML
     private CheckBox CbProductStatus;
 
-    @FXML
-    private TextField TfCategory;
+//    @FXML
+//    private TextField ;
 
     @FXML
-    private Label lblproductBoxErrMsg, lblproductIDErrMsg, lblProductNameErrMsg, lblUnitPriceErrMsg, lblSellingPrice, lblproductBrandErrMsg, lblElectronicColorErrMsg, lblModelErrMsg, lblCategory, lblClothingTypeErrMsg, lblClothingSizeErrMsg, lblClothingColorErrMsg, lblClothingMaterialErrMsg;
+    private Label lblproductBoxErrMsg, lblproductIDErrMsg, lblProductNameErrMsg, lblUnitPriceErrMsg, lblSellingPrice, lblproductBrandErrMsg, lblElectronicColorErrMsg, lblModelErrMsg, lblCategoryErrMsg, lblClothingTypeErrMsg, lblClothingSizeErrMsg, lblClothingColorErrMsg, lblClothingMaterialErrMsg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,7 +46,9 @@ public class AddProductPane implements Initializable {
 
         resetLBLErrMsg();
 
+
         productBox.valueProperty().addListener(new ChangeListener() {
+
             @Override
             public void changed(ObservableValue observableValue, Object o, Object t1) {
 
@@ -69,6 +74,19 @@ public class AddProductPane implements Initializable {
 
             }
         });
+
+
+        TfUnitPrice.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                TfUnitPrice.setText(newValue.replaceAll("[^\\d\\.]", ""));
+            }
+        });
+
+        TfSellingPrice.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                TfSellingPrice.setText(newValue.replaceAll("[^\\d\\.]", ""));
+            }
+        });
     }
 
     public void resetLBLErrMsg() {
@@ -80,7 +98,7 @@ public class AddProductPane implements Initializable {
         lblproductBrandErrMsg.setText("");
         lblElectronicColorErrMsg.setText("");
         lblModelErrMsg.setText("");
-        lblCategory.setText("");
+        lblCategoryErrMsg.setText("");
         lblClothingTypeErrMsg.setText("");
         lblClothingSizeErrMsg.setText("");
         lblClothingColorErrMsg.setText("");
@@ -93,7 +111,7 @@ public class AddProductPane implements Initializable {
         lblproductBrandErrMsg.setTextFill(Color.color(1, 0, 0));
         lblElectronicColorErrMsg.setTextFill(Color.color(1, 0, 0));
         lblModelErrMsg.setTextFill(Color.color(1, 0, 0));
-        lblCategory.setTextFill(Color.color(1, 0, 0));
+        lblCategoryErrMsg.setTextFill(Color.color(1, 0, 0));
         lblClothingTypeErrMsg.setTextFill(Color.color(1, 0, 0));
         lblClothingSizeErrMsg.setTextFill(Color.color(1, 0, 0));
         lblClothingColorErrMsg.setTextFill(Color.color(1, 0, 0));
@@ -167,7 +185,7 @@ public class AddProductPane implements Initializable {
                     errorMessage = "Clothing color is empty";
                     lblClothingColorErrMsg.setText(errorMessage);
                     validate = false;
-                }else {
+                } else {
                     lblClothingColorErrMsg.setText("");
                 }
 
@@ -176,7 +194,7 @@ public class AddProductPane implements Initializable {
                     errorMessage = "Clothing material is empty";
                     lblClothingMaterialErrMsg.setText(errorMessage);
                     validate = false;
-                }else {
+                } else {
                     lblClothingMaterialErrMsg.setText("");
                 }
 
@@ -185,7 +203,7 @@ public class AddProductPane implements Initializable {
                     errorMessage = "Clothing size is empty";
                     lblClothingSizeErrMsg.setText(errorMessage);
                     validate = false;
-                }else {
+                } else {
                     lblClothingSizeErrMsg.setText("");
                 }
 
@@ -194,7 +212,7 @@ public class AddProductPane implements Initializable {
                     errorMessage = "Clothing size is empty";
                     lblClothingTypeErrMsg.setText(errorMessage);
                     validate = false;
-                }else {
+                } else {
                     lblClothingTypeErrMsg.setText("");
                 }
             }
@@ -203,11 +221,10 @@ public class AddProductPane implements Initializable {
                 if (TfCategory.getText() == null) {
 //                    System.out.println("expiry date is empty");
                     errorMessage = "Expiry date is empty";
-                    lblCategory.setText(errorMessage);
+                    lblCategoryErrMsg.setText(errorMessage);
                     validate = false;
-                }
-                else {
-                    lblCategory.setText("");
+                } else {
+                    lblCategoryErrMsg.setText("");
                 }
             }
 
@@ -217,7 +234,7 @@ public class AddProductPane implements Initializable {
                     errorMessage = "Color is empty";
                     lblElectronicColorErrMsg.setText(errorMessage);
                     validate = false;
-                }else {
+                } else {
                     lblElectronicColorErrMsg.setText("");
                 }
 
@@ -226,14 +243,13 @@ public class AddProductPane implements Initializable {
                     errorMessage = "Model is empty";
                     lblModelErrMsg.setText(errorMessage);
                     validate = false;
-                }
-                else {
+                } else {
                     lblModelErrMsg.setText("");
                 }
             }
 
         } else {
-            String errorMessage = "please select the product type";
+            String errorMessage = "Please select the product type";
 //            System.out.println("please select the product type");
             lblproductBoxErrMsg.setText(errorMessage);
             validate = false;

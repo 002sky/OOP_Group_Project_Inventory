@@ -2,11 +2,14 @@ package com.example.oop_group_project_inventory;
 
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
 
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import org.controlsfx.control.textfield.TextFields;
 import javafx.scene.control.*;
 
@@ -25,7 +28,17 @@ public class UpdateInventoryPane implements Initializable {
 
     private String currentItem;
     private ArrayList<String> autoComplete = new ArrayList<>();
+    private Label lblinventoryIDErrMsg, lblinventoryNameErrMsg, lblinventoryAddressErrMsg;
 
+    public void resetLBLErrMsg() {
+        lblinventoryIDErrMsg.setText("");
+        lblinventoryNameErrMsg.setText("");
+        lblinventoryAddressErrMsg.setText("");
+
+        lblinventoryIDErrMsg.setTextFill(Color.color(1, 0, 0));
+        lblinventoryNameErrMsg.setTextFill(Color.color(1, 0, 0));
+        lblinventoryAddressErrMsg.setTextFill(Color.color(1, 0, 0));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         MainPage.inventoryArrayList.forEach((m) -> autoComplete.add(m.getInventoryID()));
@@ -42,6 +55,36 @@ public class UpdateInventoryPane implements Initializable {
             }
         });
 
+    }
+
+    public boolean validation(MouseEvent event) throws IOException {
+        boolean validate = true;
+        if (!TfInventoryID.getText().isEmpty()) {
+            lblinventoryIDErrMsg.setText("");
+            String errorMessage = "";
+            if (TfInventoryName.getText().isEmpty()) {
+                errorMessage = "Inventory Name is empty";
+                lblinventoryNameErrMsg.setText(errorMessage);
+                validate = false;
+            } else {
+                lblinventoryNameErrMsg.setText("");
+            }
+
+            if (TaInventoryAddress.getText().isEmpty()) {
+                errorMessage = "Inventory Address is empty";
+                lblinventoryAddressErrMsg.setText(errorMessage);
+                validate = false;
+            } else {
+                lblinventoryAddressErrMsg.setText("");
+            }
+
+        } else {
+            String errorMessage = "Please enter the inventory id";
+            lblinventoryIDErrMsg.setText(errorMessage);
+            validate = false;
+        }
+
+        return validate;
     }
 
     public int checkExistInventory(String InventoryID) {

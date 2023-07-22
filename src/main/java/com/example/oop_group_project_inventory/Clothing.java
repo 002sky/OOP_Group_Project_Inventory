@@ -96,8 +96,10 @@ public class Clothing extends Product {
 
     }
 
-    public void updateProduct(Clothing clothing) {
+    public boolean updateProduct(Clothing clothing) {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
+
+        boolean hasError=false;
         try {
             Connection connection = DriverManager.getConnection(url);
 
@@ -119,6 +121,8 @@ public class Clothing extends Product {
                 newStatement.executeUpdate();
 
                 System.out.println("Clothing Updated");
+            }else{
+                 hasError=true;
             }
             //@todo if there is an error return an error message to the user
 
@@ -128,6 +132,7 @@ public class Clothing extends Product {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        return  hasError;
     }
 
 }

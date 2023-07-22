@@ -1,11 +1,21 @@
 package com.example.oop_group_project_inventory;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -25,34 +35,68 @@ public class UpdateProductPane implements Initializable {
     public ArrayList<String> autoComplete = new ArrayList<>();
     public String currentItem;
 
-    public void UpdateProduct(MouseEvent event) {
+    public Stage primaryStage;
 
-        if(checkExistProduct(currentItem) != -1){
+    public void UpdateProduct(MouseEvent event) {
+        boolean hasError = false;
+        if (checkExistProduct(currentItem) != -1) {
 
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setProductName(TfProductName.getText());
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setUnitPrice(Double.parseDouble(TfUnitPrice.getText()));
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setSellingPrice(Double.parseDouble(TfSellingPrice.getText()));
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setProductBrand(TfProductBrand.getText());
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setProductStatus(CbProductStatus.isSelected());
-            if(MainPage.productArrayList.get(checkExistProduct(currentItem)).getClass().equals(Electronic.class)){
+            if (MainPage.productArrayList.get(checkExistProduct(currentItem)).getClass().equals(Electronic.class)) {
                 Electronic e = (Electronic) MainPage.productArrayList.get(checkExistProduct(currentItem));
                 e.setColor(TfElectronicColor.getText());
                 e.setModel(TfModel.getText());
-                e.updateProduct(e);
+                hasError = e.updateProduct(e);
 
-            }else if(MainPage.productArrayList.get(checkExistProduct(currentItem)).getClass().equals(Grocery.class)){
+
+            } else if (MainPage.productArrayList.get(checkExistProduct(currentItem)).getClass().equals(Grocery.class)) {
                 Grocery g = (Grocery) MainPage.productArrayList.get(checkExistProduct(currentItem));
                 g.setCategory(TfCategory.getText());
-                g.updateProduct(g);
+                hasError = g.updateProduct(g);
 
-            }else if(MainPage.productArrayList.get(checkExistProduct(currentItem)).getClass().equals(Clothing.class)){
+            } else if (MainPage.productArrayList.get(checkExistProduct(currentItem)).getClass().equals(Clothing.class)) {
 
                 Clothing c = (Clothing) MainPage.productArrayList.get(checkExistProduct(currentItem));
                 c.setColor(TfClothingColor.getText());
                 c.setMaterial(TfClothingMaterial.getText());
                 c.setClothingSize(TfClothingSize.getText());
                 c.setClothingType(TfClothingType.getText());
-                c.updateProduct(c);
+                hasError = c.updateProduct(c);
+            }
+
+            //Show pop up error message
+
+            if (hasError == true) {
+                primaryStage.setTitle("Error");
+                final Popup popup = new Popup();
+
+                popup.setX(300);
+                popup.setY(200);
+
+                Button show = new Button("OK");
+                show.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+//                            popup.show(primaryStage);
+                        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+                    }
+                });
+
+                Label errorMessage = new Label("There is an error happened");
+
+
+                VBox layout = new VBox(10);
+                layout.setStyle("-fx-background-color: cornsilk; -fx-padding: 10;");
+                layout.getChildren().addAll(show, errorMessage);
+                layout.setAlignment(Pos.CENTER);
+                primaryStage.setScene(new Scene(layout, 400, 400));
+                primaryStage.initModality(Modality.APPLICATION_MODAL);
+                primaryStage.setResizable(false);
+                primaryStage.show();
             }
 
             autoComplete.clear();
@@ -69,7 +113,7 @@ public class UpdateProductPane implements Initializable {
         TextFields.bindAutoCompletion(TfProductID, autoComplete);
 
         TfProductID.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(checkExistProduct(newValue) != -1){
+            if (checkExistProduct(newValue) != -1) {
                 Product tmp = MainPage.productArrayList.get(checkExistProduct(newValue));
                 currentItem = newValue;
                 TfProductName.setText(tmp.getProductName());
@@ -107,6 +151,7 @@ public class UpdateProductPane implements Initializable {
         });
 
     }
+
     public int checkExistProduct(String productID) {
         int[] a = new int[1];
         a[0] = -1;

@@ -69,8 +69,9 @@ public  class Electronic extends Product {
 
         return electronicList;
     }
-    public void updateProduct(Electronic electronic){
+    public boolean updateProduct(Electronic electronic){
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
+        boolean hasError=false;
         try {
             Connection connection = DriverManager.getConnection(url);
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -86,6 +87,8 @@ public  class Electronic extends Product {
                 newStatement.executeUpdate();
 
                 System.out.println("Electronic Updated");
+            }else{
+                hasError=true;
             }
 
             //@todo if there is an error return an error message to the user
@@ -96,6 +99,6 @@ public  class Electronic extends Product {
             throw new RuntimeException(e);
         }
 
-
+return hasError;
     }
 }

@@ -92,6 +92,8 @@ public abstract class Product {
 
             if (result >= 1) {
                 return result;
+            }else{
+                return 0;
             }
             //@TODO if there is an error return 0
 

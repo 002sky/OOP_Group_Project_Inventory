@@ -59,8 +59,9 @@ public class Grocery extends Product {
         return GroceryList;
     }
 
-    public void updateProduct(Grocery grocery) {
+    public boolean updateProduct(Grocery grocery) {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
+        boolean hasError=false;
         try {
             Connection connection = DriverManager.getConnection(url);
             int result = super.updateProduct(grocery);
@@ -77,6 +78,8 @@ public class Grocery extends Product {
                 newStatement.executeUpdate();
 
                 System.out.println("Grocery Updated");
+            }else{
+                 hasError=true;
             }
 
             //@todo if there is an error return an error message to the user
@@ -85,6 +88,8 @@ public class Grocery extends Product {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+
+        return hasError;
     }
 
 

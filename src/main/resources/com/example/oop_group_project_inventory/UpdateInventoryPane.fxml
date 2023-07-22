@@ -31,9 +31,16 @@
                 <Label text="Inventory Name :" GridPane.rowIndex="1" />
                 <Label text="Address :" GridPane.rowIndex="2" />
                 <Label text="Freezer Available :" GridPane.rowIndex="3" />
+
                 <TextField fx:id="TfInventoryID" GridPane.columnIndex="1" />
+                <Label fx:id="lblinventoryIDErrMsg" GridPane.columnIndex="2"/>
+
                 <TextField fx:id="TfInventoryName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label fx:id="lblinventoryNameErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
                 <TextArea fx:id="TaInventoryAddress" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label fx:id="lblinventoryAddressErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
                 <CheckBox fx:id="CbFreezerAvailable" mnemonicParsing="false" text="Available" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Button mnemonicParsing="false" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="4"  fx:id="BtnSubmit" onMouseClicked="#UpdateInventory"/>
             </children>
