@@ -105,5 +105,8 @@ public abstract class Product {
         return 0;
     }
 
-
+    @Override
+    public String toString() {
+        return productID + " - " + productName;
+    }
 }

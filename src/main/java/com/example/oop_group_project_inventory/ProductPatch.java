@@ -1,21 +1,20 @@
 package com.example.oop_group_project_inventory;
 
-import java.util.Date;
-
-public class ProductBatch {
-    private int batchNumber;
+import java.time.LocalDate;
+public class ProductPatch {
+    private String PatchNumber;
     private String supplySource;
     private Product items;
     private Inventory storedInventory;
-    private Date receivedDate;
+    private LocalDate receivedDate;
     private int quantity;
 
-    protected ProductBatch() {
+    protected ProductPatch() {
 
     }
 
-    protected ProductBatch(int batchNumber, String supplySource, Product items, Inventory storedInventory, Date receivedDate, int quantity) {
-        this.batchNumber = batchNumber;
+    protected ProductPatch(String PatchNumber, String supplySource, Product items, Inventory storedInventory, LocalDate receivedDate, int quantity) {
+        this.PatchNumber = PatchNumber;
         this.supplySource = supplySource;
         this.items = items;
         this.storedInventory = storedInventory;
@@ -24,8 +23,8 @@ public class ProductBatch {
 
     }
 
-    public int getBatchNumber() {
-        return batchNumber;
+    public String getPatchNumber() {
+        return PatchNumber;
     }
 
     public String getSupplySource() {
@@ -39,7 +38,7 @@ public class ProductBatch {
     public Inventory getStoredInventory() {
         return storedInventory;
     }
-    public Date getReceivedDate() {
+    public LocalDate getReceivedDate() {
         return receivedDate;
     }
 
@@ -47,8 +46,8 @@ public class ProductBatch {
         return quantity;
     }
 
-    public void setBatchNumber(int batchNumber) {
-        this.batchNumber = batchNumber;
+    public void setBatchNumber(String PatchNumber) {
+        this.PatchNumber = PatchNumber;
     }
 
     public void setSupplySource(String supplySource) {
@@ -63,7 +62,7 @@ public class ProductBatch {
         this.storedInventory = storedInventory;
     }
 
-    public void setReceivedDate(Date receivedDate) {
+    public void setReceivedDate(LocalDate receivedDate) {
         this.receivedDate = receivedDate;
     }
 

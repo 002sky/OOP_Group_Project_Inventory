@@ -35,9 +35,9 @@
                             <children>
                                 <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
                                     <items>
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Add" />
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Button" />
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Button" />
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Add" onMouseClicked="#LoadAddInventory"/>
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Update" onMouseClicked="#LoadUpdateInventory"/>
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Add Patch"  onMouseClicked="#LoadAddPatch"/>
                                     </items>
                                 </SplitPane>
                             </children>
@@ -54,7 +54,7 @@
                                 <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
                                     <items>
                                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Add" />
-                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Button" />
+                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Update" />
                                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Button" />
                                     </items>
                                 </SplitPane>

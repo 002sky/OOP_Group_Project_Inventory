@@ -1,4 +1,5 @@
 package com.example.oop_group_project_inventory;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -7,6 +8,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import java.util.ResourceBundle;
 public class MainPage implements Initializable {
 
     public static ArrayList<Product> productArrayList = new ArrayList<>();
+    public static ArrayList<Inventory> inventoryArrayList = new ArrayList<>();
 
 
     @FXML
@@ -24,7 +27,7 @@ public class MainPage implements Initializable {
     @FXML
     private BorderPane mainPage;
 
-    public HashMap<String,Pane> ContentMap = new HashMap<>();
+    public HashMap<String, Pane> ContentMap = new HashMap<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,15 +46,20 @@ public class MainPage implements Initializable {
         ArrayList<Grocery> groceries = new ArrayList<>();
         groceries.addAll(grocery.loadFromDatabase());
 
+        Inventory inventory = new Inventory();
+        inventoryArrayList.addAll(inventory.getAllInventory());
 
         productArrayList.addAll(tmpClothingArrayList);
         productArrayList.addAll(ElectronicList);
         productArrayList.addAll(groceries);
 
         try {
-            ContentMap.put("AddProduct",FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddProductPane.fxml"))));
-            ContentMap.put("ViewProduct",FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("ViewProduct.fxml"))));
-            ContentMap.put("UpdateProduct",FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("UpdateProductPane.fxml"))));
+            ContentMap.put("AddProduct", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddProductPane.fxml"))));
+            ContentMap.put("ViewProduct", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("ViewProduct.fxml"))));
+            ContentMap.put("UpdateProduct", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("UpdateProductPane.fxml"))));
+            ContentMap.put("AddInventory", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddInventoryPane.fxml"))));
+            ContentMap.put("EditInventory", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("UpdateInventoryPane.fxml"))));
+            ContentMap.put("AddPatch", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddPatchPane.fxml"))));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -59,8 +67,7 @@ public class MainPage implements Initializable {
 
     }
 
-
-    protected Pane activate(String Name){
+    protected Pane activate(String Name) {
         return ContentMap.get(Name);
     }
 
@@ -72,6 +79,19 @@ public class MainPage implements Initializable {
         ContentPane.setContent(activate("ViewProduct"));
     }
 
-    public void LoadUpdateProduct(MouseEvent event) {ContentPane.setContent(activate("UpdateProduct"));
+    public void LoadUpdateProduct(MouseEvent event) {
+        ContentPane.setContent(activate("UpdateProduct"));
+    }
+
+    public void LoadAddInventory(MouseEvent event) {
+        ContentPane.setContent(activate("AddInventory"));
+    }
+
+    public void LoadUpdateInventory(MouseEvent event) {
+        ContentPane.setContent(activate("EditInventory"));
+    }
+
+    public void LoadAddPatch(MouseEvent event) {
+        ContentPane.setContent(activate("AddPatch"));
     }
 }

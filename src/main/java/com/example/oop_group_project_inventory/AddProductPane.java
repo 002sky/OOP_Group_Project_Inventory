@@ -9,9 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -247,9 +244,7 @@ public class AddProductPane implements Initializable {
 
     public void SubmitToDatabase(MouseEvent event) throws IOException {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
-
         boolean check = validation(event);
-
         try {
             Connection connection = DriverManager.getConnection(url);
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");

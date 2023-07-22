@@ -12,12 +12,10 @@ import java.util.ResourceBundle;
 
 
 public class UpdateProductPane implements Initializable {
-
     @FXML
     private GridPane Grocery, Electronic, Clothing;
     @FXML
     private Label productBox;
-
     @FXML
     private CheckBox CbProductStatus;
     @FXML
@@ -27,39 +25,35 @@ public class UpdateProductPane implements Initializable {
     public ArrayList<String> autoComplete = new ArrayList<>();
     public String currentItem;
 
-
-
     public void UpdateProduct(MouseEvent event) {
 
-        if(checkExitProduct(currentItem) != -1){
+        if(checkExistProduct(currentItem) != -1){
 
-            MainPage.productArrayList.get(checkExitProduct(currentItem)).setProductName(TfProductName.getText());
-            MainPage.productArrayList.get(checkExitProduct(currentItem)).setUnitPrice(Double.parseDouble(TfUnitPrice.getText()));
-            MainPage.productArrayList.get(checkExitProduct(currentItem)).setSellingPrice(Double.parseDouble(TfSellingPrice.getText()));
-            MainPage.productArrayList.get(checkExitProduct(currentItem)).setProductBrand(TfProductBrand.getText());
-            MainPage.productArrayList.get(checkExitProduct(currentItem)).setProductStatus(CbProductStatus.isSelected());
-            if(MainPage.productArrayList.get(checkExitProduct(currentItem)).getClass().equals(Electronic.class)){
-                Electronic e = (Electronic) MainPage.productArrayList.get(checkExitProduct(currentItem));
+            MainPage.productArrayList.get(checkExistProduct(currentItem)).setProductName(TfProductName.getText());
+            MainPage.productArrayList.get(checkExistProduct(currentItem)).setUnitPrice(Double.parseDouble(TfUnitPrice.getText()));
+            MainPage.productArrayList.get(checkExistProduct(currentItem)).setSellingPrice(Double.parseDouble(TfSellingPrice.getText()));
+            MainPage.productArrayList.get(checkExistProduct(currentItem)).setProductBrand(TfProductBrand.getText());
+            MainPage.productArrayList.get(checkExistProduct(currentItem)).setProductStatus(CbProductStatus.isSelected());
+            if(MainPage.productArrayList.get(checkExistProduct(currentItem)).getClass().equals(Electronic.class)){
+                Electronic e = (Electronic) MainPage.productArrayList.get(checkExistProduct(currentItem));
                 e.setColor(TfElectronicColor.getText());
                 e.setModel(TfModel.getText());
                 e.updateProduct(e);
 
-            }else if(MainPage.productArrayList.get(checkExitProduct(currentItem)).getClass().equals(Grocery.class)){
-                Grocery g = (Grocery) MainPage.productArrayList.get(checkExitProduct(currentItem));
+            }else if(MainPage.productArrayList.get(checkExistProduct(currentItem)).getClass().equals(Grocery.class)){
+                Grocery g = (Grocery) MainPage.productArrayList.get(checkExistProduct(currentItem));
                 g.setCategory(TfCategory.getText());
                 g.updateProduct(g);
 
-            }else if(MainPage.productArrayList.get(checkExitProduct(currentItem)).getClass().equals(Clothing.class)){
+            }else if(MainPage.productArrayList.get(checkExistProduct(currentItem)).getClass().equals(Clothing.class)){
 
-                Clothing c = (Clothing) MainPage.productArrayList.get(checkExitProduct(currentItem));
+                Clothing c = (Clothing) MainPage.productArrayList.get(checkExistProduct(currentItem));
                 c.setColor(TfClothingColor.getText());
                 c.setMaterial(TfClothingMaterial.getText());
                 c.setClothingSize(TfClothingSize.getText());
                 c.setClothingType(TfClothingType.getText());
-
                 c.updateProduct(c);
             }
-
 
             autoComplete.clear();
             MainPage.productArrayList.forEach((m) -> autoComplete.add(m.getProductID()));
@@ -75,9 +69,8 @@ public class UpdateProductPane implements Initializable {
         TextFields.bindAutoCompletion(TfProductID, autoComplete);
 
         TfProductID.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(checkExitProduct(newValue) != -1){
-
-                Product tmp = MainPage.productArrayList.get(checkExitProduct(newValue));
+            if(checkExistProduct(newValue) != -1){
+                Product tmp = MainPage.productArrayList.get(checkExistProduct(newValue));
                 currentItem = newValue;
                 TfProductName.setText(tmp.getProductName());
                 TfUnitPrice.setText(String.valueOf(tmp.getUnitPrice()));
@@ -114,8 +107,7 @@ public class UpdateProductPane implements Initializable {
         });
 
     }
-
-    public int checkExitProduct(String productID) {
+    public int checkExistProduct(String productID) {
         int[] a = new int[1];
         a[0] = -1;
         MainPage.productArrayList.forEach((n) -> {

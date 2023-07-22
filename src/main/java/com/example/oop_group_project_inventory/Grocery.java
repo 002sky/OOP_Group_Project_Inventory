@@ -5,7 +5,6 @@ import java.sql.*;
 
 public class Grocery extends Product {
     private String category;
-
     protected Grocery() {
 
     }
