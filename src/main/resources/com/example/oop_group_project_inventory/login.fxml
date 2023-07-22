@@ -1,58 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.Login">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../IdeaProjects/OOP_Group_Project_Inventory1/src/main/java/com/example/oop_group_project_inventory/login.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-
-        <StackPane AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-            <Label minWidth="-Infinity" layoutX="40.0" layoutY="35.0" text="Inventory Management System"
-                   textOverrun="CLIP">
-                <font>
-                    <Font size="38.0"/>
-                </font>
-            </Label>
+        <BorderPane layoutX="-1.0" layoutY="-7.0" prefHeight="407.0" prefWidth="240.0">
+            <left>
+                <Pane prefHeight="350.0" prefWidth="240.0" styleClass="linear-grad" stylesheets="@../../../../java/com/example/oop_group_project_inventory/login.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox layoutX="78.0" layoutY="63.0" prefHeight="90.0" prefWidth="85.0" />
+                        <Label layoutX="64.0" layoutY="236.0" prefHeight="36.0" prefWidth="114.0" text="Inventory" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="25.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="202.0" fitWidth="187.0" layoutX="26.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                            <image>
+                                <Image url="@../../../inventory.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="42.0" layoutY="272.0" prefHeight="36.0" prefWidth="159.0" text="Management" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="25.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="79.0" layoutY="308.0" prefHeight="36.0" prefWidth="85.0" text="System" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="25.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            </left>
+            <right>
+                <Pane BorderPane.alignment="CENTER" />
+            </right>
+        </BorderPane>
+        <StackPane layoutX="239.0" prefHeight="400.0" prefWidth="362.0">
+            <children>
+                <Pane prefHeight="321.0" prefWidth="275.0" style="-fx-background-color: #FFFDF4;" stylesheets="@../../../../java/com/example/oop_group_project_inventory/login.css">
+                    <children>
+                        <TextField fx:id="tfUsername" layoutX="91.0" layoutY="128.0" prefHeight="35.0" prefWidth="245.0" promptText="Username" />
+                        <PasswordField fx:id="tfPassword" layoutX="91.0" layoutY="184.0" onMouseClicked="#passwordFieldTriggered" prefHeight="35.0" prefWidth="245.0" promptText="Password" />
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="43.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../user.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="46.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../password.png" />
+                            </image>
+                        </ImageView>
+                        <Button fx:id="btnLogin" layoutX="121.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#changeStage" prefHeight="35.0" prefWidth="120.0" stylesheets="@../../../../java/com/example/oop_group_project_inventory/login.css" text="Login">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                            <effect>
+                                <DropShadow>
+                                    <color>
+                                        <Color green="0.10196078568696976" blue="1.0" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+                        <CheckBox fx:id="showPasswordCheckBox" layoutX="276.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleShowPasswordChecked" text="Show">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </CheckBox>
+                        <Label layoutX="43.0" layoutY="71.0" prefHeight="23.0" prefWidth="57.0" text="Login">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            </children>
         </StackPane>
-        <StackPane AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                   AnchorPane.bottomAnchor="0.0">
-            <!--  Login Form Grouping     -->
-            <Group StackPane.alignment="CENTER">
-                <children>
-                    <Label layoutY="14.0" minWidth="-Infinity" text="Login: ">
-                        <font>
-                            <Font size="18.0"/>
-                        </font>
-                    </Label>
-
-                    <!-- Error message label set visible when return error -->
-                    <Label layoutX="99.0" layoutY="47.0" minWidth="-Infinity" text="Label"
-                           visible="false"/>
-                    <TextField layoutX="99.0" layoutY="18.0"/>
-                    <Label layoutY="89.0" minWidth="-Infinity" text="Password:">
-                        <font>
-                            <Font size="18.0"/>
-                        </font>
-                    </Label>
-                    <PasswordField fx:id="tfPassword" layoutX="99.0" layoutY="94.0"
-                                   onMouseClicked="#passwordFieldTriggered"/>
-
-
-                    <!-- Error message label set visible when return error -->
-                    <Label fx:id="lbPasswordError" layoutX="99.0" layoutY="124.0" minWidth="-Infinity"
-                           text="Label" visible="false"/>
-                    <CheckBox layoutX="254.0" layoutY="98.0" mnemonicParsing="false" text="Hide"/>
-                    <Button layoutX="159.0" layoutY="149.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0"
-                            text="Login" onMouseClicked="#changeStage" styleClass="btn-primary"/>
-
-                    <!--onMouseClicked="#checkForm"-->
-
-                </children>
-            </Group>
-        </StackPane>
-
     </children>
 </AnchorPane>
