@@ -1,9 +1,11 @@
 package com.example.oop_group_project_inventory;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -17,9 +19,10 @@ import java.util.ResourceBundle;
 
 public class Login implements Initializable {
     @FXML
-    private Label lbPasswordError;
+    private Button btnLogin;
     @FXML
     private TextField tfPassword;
+
     @FXML
     private Tooltip toolTipTxtPassword;
 
@@ -42,13 +45,17 @@ public class Login implements Initializable {
     public void changeStage() throws Exception {
 
 
-        Stage stageOftheLabel = (Stage) lbPasswordError.getScene().getWindow();
+        Stage stageOftheLabel = (Stage) btnLogin.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(inventoryApplication.class.getResource("mainPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+//        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+//        scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
         stageOftheLabel.setScene(scene);
 //        stageOftheLabel.setMaximized(true);
 
+    }
+
+    public void handleShowPasswordChecked(ActionEvent event) {
     }
 
 //    public void checkForm(){

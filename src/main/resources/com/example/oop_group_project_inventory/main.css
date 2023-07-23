@@ -1,5 +1,5 @@
 .scroll-pane-gb {
-    -fx-background-image: url('resources/background.png');
+    -fx-background-image: url('/resources/background.png');
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
 }

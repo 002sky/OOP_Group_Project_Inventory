@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPage" prefHeight="576.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.MainPage">
+<BorderPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.MainPage">
     <left>
-        <Accordion prefHeight="400.0" prefWidth="119.0" styleClass="linear-grad" stylesheets="@../../../../java/com/example/oop_group_project_inventory/main.css" BorderPane.alignment="CENTER">
+        <Accordion prefHeight="400.0" prefWidth="119.0" styleClass="linear-grad" stylesheets="@main.css" BorderPane.alignment="CENTER">
             <panes>
                 <TitledPane prefHeight="200.0" prefWidth="200.0" text="Product" textAlignment="CENTER">
                     <content>
-                        <VBox alignment="TOP_CENTER" prefHeight="1002.0" prefWidth="161.0" styleClass="linear-grad" stylesheets="@../../../../java/com/example/oop_group_project_inventory/main.css">
+                        <VBox alignment="TOP_CENTER" prefHeight="1002.0" prefWidth="161.0" styleClass="linear-grad" stylesheets="@main.css">
                             <children>
                                 <SplitPane dividerPositions="0.32335329341317376, 0.6706586826347308" orientation="VERTICAL">
                                     <items>
@@ -50,19 +50,19 @@
                 </TitledPane>
                 <TitledPane prefHeight="200.0" prefWidth="200.0" text="Inventory">
                     <content>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="linear-grad" stylesheets="@../../../../java/com/example/oop_group_project_inventory/main.css">
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="linear-grad" stylesheets="@main.css">
                             <children>
                                 <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
                                     <items>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Add">
+                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Add" onMouseClicked="#LoadAddInventory">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="View">
+                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Update" onMouseClicked="#LoadUpdateInventory">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Update">
+                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Add Patch" onMouseClicked="#LoadAddPatch">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>
@@ -80,7 +80,7 @@
                 </TitledPane>
                 <TitledPane prefHeight="200.0" prefWidth="200.0" text="Order">
                     <content>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="linear-grad" stylesheets="@../../../../java/com/example/oop_group_project_inventory/main.css">
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="linear-grad" stylesheets="@main.css">
                             <children>
                                 <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
                                     <items>
@@ -113,6 +113,6 @@
         </Accordion>
     </left>
     <center>
-        <ScrollPane fx:id="ContentPane" prefHeight="628.0" prefWidth="677.0" styleClass="scroll-pane-gb" stylesheets="@../../../../java/com/example/oop_group_project_inventory/main.css" BorderPane.alignment="CENTER" />
+        <ScrollPane fx:id="ContentPane" prefHeight="628.0" prefWidth="677.0" styleClass="scroll-pane-gb" stylesheets="@main.css" BorderPane.alignment="CENTER" />
     </center>
 </BorderPane>
