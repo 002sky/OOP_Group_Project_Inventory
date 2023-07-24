@@ -59,7 +59,7 @@ public class AddPatchPane implements Initializable {
         });
     }
 
-    public boolean validation(MouseEvent event) throws IOException {
+    public boolean validation() throws IOException {
         boolean validate = true;
             String errorMessage = "";
             if (TfPatchNumber.getText().isEmpty()) {
@@ -115,8 +115,29 @@ public class AddPatchPane implements Initializable {
         return validate;
     }
 
-    public void SavePatch(MouseEvent event) {
+    public void SavePatch(MouseEvent event) throws IOException{
         Product product = CbProductBox.getSelectionModel().getSelectedItem();
+        Inventory inventory = CbInventoryBox.getSelectionModel().getSelectedItem();
+
+        if (validation()) {
+            ProductPatch productPatch = new ProductPatch();
+            productPatch.setPatchNumber(TfPatchNumber.getText());
+            productPatch.setSupplySource(TfSupplySource.getText());
+            productPatch.setItems(product);
+            productPatch.setInventory(inventory);
+            productPatch.setReceivedDate(DpReceivedDate.getValue());
+            productPatch.setQuantity(Integer.parseInt(TfQuantity.getText()));
+            int result = productPatch.saveToDatabase(productPatch);
+
+            if(result == 1){
+                //Todo message here
+                System.out.println("success");
+            }
+            else {
+                System.out.println("error");
+            }
+        }
+
 
         System.out.println(product.getProductID());
     }

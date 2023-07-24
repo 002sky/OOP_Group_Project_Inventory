@@ -21,6 +21,8 @@ public class MainPage implements Initializable {
     public static ArrayList<Product> productArrayList = new ArrayList<>();
     public static ArrayList<Inventory> inventoryArrayList = new ArrayList<>();
 
+    public static ArrayList<ProductPatch> productPatchArrayList = new ArrayList<>();
+
 
     @FXML
     private ScrollPane ContentPane;
@@ -60,6 +62,7 @@ public class MainPage implements Initializable {
             ContentMap.put("AddInventory", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddInventoryPane.fxml"))));
             ContentMap.put("EditInventory", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("UpdateInventoryPane.fxml"))));
             ContentMap.put("AddPatch", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddPatchPane.fxml"))));
+            ContentMap.put("ViewPatch", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("ViewPatchPane.fxml"))));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -93,5 +96,9 @@ public class MainPage implements Initializable {
 
     public void LoadAddPatch(MouseEvent event) {
         ContentPane.setContent(activate("AddPatch"));
+    }
+
+    public void LoadViewPatch(MouseEvent event) {
+        ContentPane.setContent(activate("ViewPatch"));
     }
 }

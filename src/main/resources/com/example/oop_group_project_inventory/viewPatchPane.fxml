@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.ViewPatchPane">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="View Patch" />
+      <VBox layoutX="14.0" layoutY="47.0" prefHeight="343.0" prefWidth="572.0">
+         <children>
+            <TextField prefHeight="0.0" prefWidth="572.0" fx:id="TfSearch"/>
+            <TableView prefHeight="316.0" prefWidth="572.0" fx:id="TvProductPatch">
+
+            </TableView>
+         </children></VBox>
+   </children>
+</Pane>
