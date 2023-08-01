@@ -110,8 +110,43 @@ public class Inventory {
         return inventoryExists[0];
     }
 
+    public boolean updateInventory(Inventory inventory){
+        boolean hasError=false;
+        String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
+        try {
+            Connection connection = DriverManager.getConnection(url);
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+            String sql = "UPDATE Inventory SET inventoryID = ?, inventoryName = ?, inventoryLocation = ?, freezerAvailable = ? WHERE inventoryID = ?";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, inventory.getInventoryID());
+            statement.setString(2, inventory.getInventoryName());
+            statement.setString(3, inventory.getInventoryLocation());
+            statement.setBoolean(4, inventory.isFreezerAvailable());
+            statement.setString(5, inventory.getInventoryID());
+            int result = statement.executeUpdate();
+
+            if(result == 1){
+                System.out.println("Inventory updated successfully");
+
+            }else{
+                System.out.println("Inventory not updated");
+                hasError = true;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    return hasError;
+    }
+
     @Override
     public String toString() {
         return inventoryID + " - " + inventoryName;
     }
+
+
 }

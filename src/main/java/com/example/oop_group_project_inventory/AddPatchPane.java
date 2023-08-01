@@ -110,12 +110,11 @@ public class AddPatchPane implements Initializable {
             lblInventoryBoxErrMsg.setText("");
         }
 
-
-
         return validate;
     }
 
     public void SavePatch(MouseEvent event) throws IOException{
+
         Product product = CbProductBox.getSelectionModel().getSelectedItem();
         Inventory inventory = CbInventoryBox.getSelectionModel().getSelectedItem();
 

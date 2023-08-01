@@ -47,7 +47,6 @@ public class Grocery extends Product {
                 Grocery a = new Grocery(id,name,unitPrice,sellingPrice,brand,status,category);
                 GroceryList.add(a);
 
-                System.out.println(a.getProductID() + " " + a.getProductName() + " " + a.getSellingPrice());
             }
 
 

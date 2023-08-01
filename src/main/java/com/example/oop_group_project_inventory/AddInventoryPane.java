@@ -52,6 +52,8 @@ public class AddInventoryPane {
                 inventory = new Inventory(TfInventoryID.getText(), TfInventoryName.getText(), TaInventoryAddress.getText(), CbFreezerAvailable.isSelected());
                 MainPage.inventoryArrayList.add(inventory);
                 inventory.addInventory(inventory);
+
+
             }
 
         } else {

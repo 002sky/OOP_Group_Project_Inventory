@@ -58,7 +58,6 @@ public  class Electronic extends Product {
                 Electronic a = new Electronic(id,name,unitPrice,sellingPrice,brand,status,color,models);
                 electronicList.add(a);
 
-                System.out.println(a.getProductID() + " " + a.getProductName() + " " + a.getSellingPrice());
             }
 
         } catch (SQLException ex) {

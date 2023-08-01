@@ -23,6 +23,7 @@ public class MainPage implements Initializable {
 
     public static ArrayList<ProductPatch> productPatchArrayList = new ArrayList<>();
 
+    public static  ArrayList<Order> orderArrayList = new ArrayList<>();
 
     @FXML
     private ScrollPane ContentPane;
@@ -33,27 +34,8 @@ public class MainPage implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<Clothing> tmpClothingArrayList = new ArrayList<>();
 
-        Clothing clothing = new Clothing();
-        tmpClothingArrayList.addAll(clothing.loadFromDatabase());
-
-
-        ArrayList<Electronic> ElectronicList = new ArrayList<>();
-
-        Electronic electronic = new Electronic();
-        ElectronicList.addAll(electronic.loadFromDatabase());
-
-        Grocery grocery = new Grocery();
-        ArrayList<Grocery> groceries = new ArrayList<>();
-        groceries.addAll(grocery.loadFromDatabase());
-
-        Inventory inventory = new Inventory();
-        inventoryArrayList.addAll(inventory.getAllInventory());
-
-        productArrayList.addAll(tmpClothingArrayList);
-        productArrayList.addAll(ElectronicList);
-        productArrayList.addAll(groceries);
+        initializeData();
 
         try {
             ContentMap.put("AddProduct", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddProductPane.fxml"))));
@@ -63,7 +45,8 @@ public class MainPage implements Initializable {
             ContentMap.put("EditInventory", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("UpdateInventoryPane.fxml"))));
             ContentMap.put("AddPatch", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddPatchPane.fxml"))));
             ContentMap.put("ViewPatch", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("ViewPatchPane.fxml"))));
-
+            ContentMap.put("AddOrder", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("AddOrderPane.fxml"))));
+            ContentMap.put("ViewOrder", FXMLLoader.load(Objects.requireNonNull(inventoryApplication.class.getResource("ViewOrderPane.fxml"))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -101,4 +84,40 @@ public class MainPage implements Initializable {
     public void LoadViewPatch(MouseEvent event) {
         ContentPane.setContent(activate("ViewPatch"));
     }
+
+    public void loadAddOrder(MouseEvent event) {
+        ContentPane.setContent(activate("AddOrder" ));
+    }
+
+    public void loadViewOrder(MouseEvent event) {
+        ContentPane.setContent(activate("ViewOrder"));
+    }
+
+
+    public void initializeData(){
+        ArrayList<Clothing> tmpClothingArrayList = new ArrayList<>();
+
+        Clothing clothing = new Clothing();
+        tmpClothingArrayList.addAll(clothing.loadFromDatabase());
+
+
+        ArrayList<Electronic> ElectronicList = new ArrayList<>();
+
+        Electronic electronic = new Electronic();
+        ElectronicList.addAll(electronic.loadFromDatabase());
+
+        Grocery grocery = new Grocery();
+        ArrayList<Grocery> groceries = new ArrayList<>();
+        groceries.addAll(grocery.loadFromDatabase());
+
+        Inventory inventory = new Inventory();
+        inventoryArrayList.addAll(inventory.getAllInventory());
+        productArrayList.addAll(tmpClothingArrayList);
+        productArrayList.addAll(ElectronicList);
+        productArrayList.addAll(groceries);
+
+        Order order = new Order();
+        orderArrayList.addAll(order.getAllOrders());
+    }
+
 }

@@ -83,7 +83,7 @@ public class Clothing extends Product {
 
                 ClothingList.add(a);
 
-                System.out.println(a.getProductID() + " " + a.getProductName() + " " + a.getSellingPrice());
+
             }
 
 

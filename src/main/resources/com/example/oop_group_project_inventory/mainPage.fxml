@@ -90,11 +90,11 @@
                             <children>
                                 <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
                                     <items>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Add">
+                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Add" onMouseClicked="#loadAddOrder">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="View">
+                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="View" onMouseClicked="#loadViewOrder">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>

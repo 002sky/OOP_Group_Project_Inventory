@@ -28,6 +28,7 @@ public class UpdateInventoryPane implements Initializable {
 
     private String currentItem;
     private ArrayList<String> autoComplete = new ArrayList<>();
+    @FXML
     private Label lblinventoryIDErrMsg, lblinventoryNameErrMsg, lblinventoryAddressErrMsg;
 
     public void resetLBLErrMsg() {
@@ -46,6 +47,11 @@ public class UpdateInventoryPane implements Initializable {
         TextFields.bindAutoCompletion(TfInventoryID, autoComplete);
 
         TfInventoryID.textProperty().addListener((observable, oldValue, newValue) -> {
+            autoComplete.clear();
+            MainPage.inventoryArrayList.forEach((m) -> autoComplete.add(m.getInventoryID()));
+            TextFields.bindAutoCompletion(TfInventoryID, autoComplete);
+
+
             if (checkExistInventory(newValue) != -1) {
                 Inventory inventory = MainPage.inventoryArrayList.get(checkExistInventory(newValue));
                 TfInventoryID.setText(inventory.getInventoryID());
@@ -57,7 +63,7 @@ public class UpdateInventoryPane implements Initializable {
 
     }
 
-    public boolean validation(MouseEvent event) throws IOException {
+    public boolean validation() throws IOException {
         boolean validate = true;
         if (!TfInventoryID.getText().isEmpty()) {
             lblinventoryIDErrMsg.setText("");
@@ -98,8 +104,21 @@ public class UpdateInventoryPane implements Initializable {
         return a[0];
     }
 
-    public void UpdateInventory(MouseEvent event) {
+    public void UpdateInventory(MouseEvent event) throws IOException {
+        boolean hasError = false;
 
+        if (validation() == true) {
+            Inventory inventory = MainPage.inventoryArrayList.get(checkExistInventory(TfInventoryID.getText()));
 
+            MainPage.inventoryArrayList.get(checkExistInventory(TfInventoryID.getText())).setInventoryName(TfInventoryName.getText());
+            MainPage.inventoryArrayList.get(checkExistInventory(TfInventoryID.getText())).setInventoryLocation(TaInventoryAddress.getText());
+            MainPage.inventoryArrayList.get(checkExistInventory(TfInventoryID.getText())).setFreezerAvailable(CbFreezerAvailable.isSelected());
+
+            hasError = inventory.updateInventory(MainPage.inventoryArrayList.get(checkExistInventory(TfInventoryID.getText())));
+
+            //TODO: error message
+
+        }
     }
+
 }

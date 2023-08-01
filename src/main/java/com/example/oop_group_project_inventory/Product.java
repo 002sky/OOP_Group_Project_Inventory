@@ -111,4 +111,14 @@ public abstract class Product {
     public String toString() {
         return productID + " - " + productName;
     }
+    public int checkProductExists(String productID){
+        int[] productExists = new int[1];
+        productExists[0] = -1;
+        MainPage.productArrayList.forEach(product -> {
+            if(product.getProductID().equals(productID)){
+                productExists[0] = MainPage.productArrayList.indexOf(product);
+            }
+        });
+        return productExists[0];
+    }
 }

@@ -40,7 +40,6 @@ public class UpdateProductPane implements Initializable {
     public void UpdateProduct(MouseEvent event) {
         boolean hasError = false;
         if (checkExistProduct(currentItem) != -1) {
-
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setProductName(TfProductName.getText());
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setUnitPrice(Double.parseDouble(TfUnitPrice.getText()));
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setSellingPrice(Double.parseDouble(TfSellingPrice.getText()));
@@ -113,6 +112,9 @@ public class UpdateProductPane implements Initializable {
         TextFields.bindAutoCompletion(TfProductID, autoComplete);
 
         TfProductID.textProperty().addListener((observable, oldValue, newValue) -> {
+            autoComplete.clear();
+            MainPage.productArrayList.forEach((n) -> autoComplete.add(n.getProductID()));
+            TextFields.bindAutoCompletion(TfProductID, autoComplete);
             if (checkExistProduct(newValue) != -1) {
                 Product tmp = MainPage.productArrayList.get(checkExistProduct(newValue));
                 currentItem = newValue;
