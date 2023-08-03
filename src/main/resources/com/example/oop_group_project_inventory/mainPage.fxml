@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.MainPage">
+<BorderPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.MainPage">
     <left>
         <Accordion prefHeight="400.0" prefWidth="119.0" styleClass="linear-grad" stylesheets="@main.css" BorderPane.alignment="CENTER">
             <panes>
@@ -42,7 +42,7 @@
                         </VBox>
                     </content>
                     <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="14.0" />
                     </font>
                     <effect>
                         <ColorAdjust />
@@ -52,22 +52,22 @@
                     <content>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="linear-grad" stylesheets="@main.css">
                             <children>
-                                <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
+                                <SplitPane dividerPositions="0.5, 0.5, 0.5" orientation="VERTICAL">
                                     <items>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Add" onMouseClicked="#LoadAddInventory">
+                                        <Button mnemonicParsing="false" onMouseClicked="#LoadAddInventory" prefHeight="40.0" prefWidth="106.0" text="Add">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Update" onMouseClicked="#LoadUpdateInventory">
+                                        <Button mnemonicParsing="false" onMouseClicked="#LoadUpdateInventory" prefHeight="40.0" prefWidth="106.0" text="Update">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Add Patch" onMouseClicked="#LoadAddPatch">
+                                        <Button mnemonicParsing="false" onMouseClicked="#LoadAddPatch" prefHeight="40.0" prefWidth="106.0" text="Add Patch">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
                                         </Button>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="View Patch" onMouseClicked="#LoadViewPatch">
+                                        <Button mnemonicParsing="false" onMouseClicked="#LoadViewPatch" prefHeight="40.0" prefWidth="106.0" text="View Patch">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -81,7 +81,7 @@
                         </VBox>
                     </content>
                     <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </TitledPane>
                 <TitledPane prefHeight="200.0" prefWidth="200.0" text="Order">
@@ -90,11 +90,11 @@
                             <children>
                                 <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
                                     <items>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Add" onMouseClicked="#loadAddOrder">
+                                        <Button mnemonicParsing="false" onMouseClicked="#loadAddOrder" prefHeight="40.0" prefWidth="106.0" text="Add">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>
-                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="View" onMouseClicked="#loadViewOrder">
+                                        <Button mnemonicParsing="false" onMouseClicked="#loadViewOrder" prefHeight="40.0" prefWidth="106.0" text="View">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>
@@ -112,7 +112,7 @@
                         </VBox>
                     </content>
                     <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </TitledPane>
             </panes>
