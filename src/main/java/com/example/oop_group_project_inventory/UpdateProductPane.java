@@ -25,7 +25,7 @@ public class UpdateProductPane implements Initializable {
     @FXML
     private GridPane Grocery, Electronic, Clothing;
     @FXML
-    private Label productBox;
+    private Label productBox, lblproductIDErrMsg;
     @FXML
     private CheckBox CbProductStatus;
     @FXML
@@ -39,6 +39,7 @@ public class UpdateProductPane implements Initializable {
 
     public void UpdateProduct(MouseEvent event) {
         boolean hasError = false;
+
         if (checkExistProduct(currentItem) != -1) {
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setProductName(TfProductName.getText());
             MainPage.productArrayList.get(checkExistProduct(currentItem)).setUnitPrice(Double.parseDouble(TfUnitPrice.getText()));
@@ -69,38 +70,42 @@ public class UpdateProductPane implements Initializable {
 
             //Show pop up error message
 
-            if (hasError == true) {
-                primaryStage.setTitle("Error");
-                final Popup popup = new Popup();
 
-                popup.setX(300);
-                popup.setY(200);
+            primaryStage = new Stage();
+            primaryStage.setTitle(hasError == true ? "Error" : "Updated successfully");
+            final Popup popup = new Popup();
 
-                Button show = new Button("OK");
-                show.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
+            popup.setX(300);
+            popup.setY(200);
+
+            Button show = new Button("OK");
+            show.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
 //                            popup.show(primaryStage);
-                        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
-                    }
-                });
+                    ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+                }
+            });
 
-                Label errorMessage = new Label("There is an error happened");
+            Label message = new Label(hasError == true ? "There is an error happened" : "Your product has been updated successfully");
 
 
-                VBox layout = new VBox(10);
-                layout.setStyle("-fx-background-color: cornsilk; -fx-padding: 10;");
-                layout.getChildren().addAll(show, errorMessage);
-                layout.setAlignment(Pos.CENTER);
-                primaryStage.setScene(new Scene(layout, 400, 400));
-                primaryStage.initModality(Modality.APPLICATION_MODAL);
-                primaryStage.setResizable(false);
-                primaryStage.show();
-            }
+            VBox layout = new VBox(10);
+            layout.setStyle(hasError == true ? "-fx-background-color: cornsilk; -fx-padding: 10;" : "-fx-background-color: lightgreen; -fx-padding: 10;");
+            layout.getChildren().addAll(show, message);
+            layout.setAlignment(Pos.CENTER);
+            primaryStage.setScene(new Scene(layout, 400, 400));
+            primaryStage.initModality(Modality.APPLICATION_MODAL);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+
 
             autoComplete.clear();
             MainPage.productArrayList.forEach((m) -> autoComplete.add(m.getProductID()));
             TextFields.bindAutoCompletion(TfProductID, autoComplete);
+        } else {
+            lblproductIDErrMsg.setText("Product ID can't be empty");
+            lblproductIDErrMsg.setTextFill(javafx.scene.paint.Color.RED);
         }
     }
 
@@ -119,6 +124,7 @@ public class UpdateProductPane implements Initializable {
                 Product tmp = MainPage.productArrayList.get(checkExistProduct(newValue));
                 currentItem = newValue;
                 TfProductName.setText(tmp.getProductName());
+
                 TfUnitPrice.setText(String.valueOf(tmp.getUnitPrice()));
                 TfSellingPrice.setText(String.valueOf(tmp.getSellingPrice()));
                 TfProductBrand.setText(tmp.getProductBrand());
@@ -128,6 +134,7 @@ public class UpdateProductPane implements Initializable {
                     Electronic e = (Electronic) tmp;
                     TfElectronicColor.setText(e.getColor());
                     TfModel.setText(e.getModel());
+                    productBox.setText("Electronic");
                     Grocery.setVisible(false);
                     Clothing.setVisible(false);
                     Electronic.setVisible(true);
@@ -138,6 +145,7 @@ public class UpdateProductPane implements Initializable {
                     Electronic.setVisible(false);
                     Clothing.setVisible(false);
                     Grocery.setVisible(true);
+                    productBox.setText("Grocery");
 
                 } else if (tmp.getClass().equals(Clothing.class)) {
                     Clothing c = (Clothing) tmp;
@@ -148,6 +156,8 @@ public class UpdateProductPane implements Initializable {
                     Electronic.setVisible(false);
                     Grocery.setVisible(false);
                     Clothing.setVisible(true);
+                    productBox.setText("Clothing");
+
                 }
             }
         });

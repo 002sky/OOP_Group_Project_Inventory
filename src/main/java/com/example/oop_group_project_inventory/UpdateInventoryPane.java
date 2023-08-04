@@ -1,5 +1,7 @@
 package com.example.oop_group_project_inventory;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 
@@ -8,12 +10,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
 
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 import javafx.scene.control.*;
-
-
 
 
 public class UpdateInventoryPane implements Initializable {
@@ -30,6 +36,8 @@ public class UpdateInventoryPane implements Initializable {
     private ArrayList<String> autoComplete = new ArrayList<>();
     @FXML
     private Label lblinventoryIDErrMsg, lblinventoryNameErrMsg, lblinventoryAddressErrMsg;
+    public Stage primaryStage;
+
 
     public void resetLBLErrMsg() {
         lblinventoryIDErrMsg.setText("");
@@ -40,9 +48,11 @@ public class UpdateInventoryPane implements Initializable {
         lblinventoryNameErrMsg.setTextFill(Color.color(1, 0, 0));
         lblinventoryAddressErrMsg.setTextFill(Color.color(1, 0, 0));
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         MainPage.inventoryArrayList.forEach((m) -> autoComplete.add(m.getInventoryID()));
+        resetLBLErrMsg();
 
         TextFields.bindAutoCompletion(TfInventoryID, autoComplete);
 
@@ -58,6 +68,8 @@ public class UpdateInventoryPane implements Initializable {
                 TfInventoryName.setText(inventory.getInventoryName());
                 TaInventoryAddress.setText(inventory.getInventoryLocation());
                 CbFreezerAvailable.setSelected(inventory.isFreezerAvailable());
+                resetLBLErrMsg();
+
             }
         });
 
@@ -118,7 +130,44 @@ public class UpdateInventoryPane implements Initializable {
 
             //TODO: error message
 
+            //Show pop up error message
+
+
+            primaryStage = new Stage();
+            primaryStage.setTitle(hasError == true ? "Error" : "Success");
+            final Popup popup = new Popup();
+
+            popup.setX(300);
+            popup.setY(200);
+
+            Button show = new Button("OK");
+            show.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+//                            popup.show(primaryStage);
+                    ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+                }
+            });
+
+            Label errorMessage = new Label(hasError == true ? "There is an error happened" : "Your inventory has been updated successfully");
+
+
+            VBox layout = new VBox(10);
+            layout.setStyle(hasError == true ? "-fx-background-color: cornsilk; -fx-padding: 10;" : "-fx-background-color: lightgreen; -fx-padding: 10;");
+            layout.getChildren().addAll(show, errorMessage);
+            layout.setAlignment(Pos.CENTER);
+            primaryStage.setScene(new Scene(layout, 400, 400));
+            primaryStage.initModality(Modality.APPLICATION_MODAL);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+
+
+            autoComplete.clear();
+            MainPage.productArrayList.forEach((m) -> autoComplete.add(m.getProductID()));
+            TextFields.bindAutoCompletion(TfInventoryID, autoComplete);
+
         }
+
     }
 
 }

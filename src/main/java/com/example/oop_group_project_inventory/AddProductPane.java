@@ -120,6 +120,32 @@ public class AddProductPane implements Initializable {
 
     }
 
+    public void clearData() {
+        resetLBLErrMsg();
+        TfCategory.setText("");
+        TfProductID.setText("");
+        TfProductName.setText("");
+        TfUnitPrice.setText("");
+        TfSellingPrice.setText("");
+        TfProductBrand.setText("");
+        TfElectronicColor.setText("");
+        TfModel.setText("");
+        TfClothingType.setText("");
+        TfClothingSize.setText("");
+        TfClothingColor.setText("");
+        TfClothingMaterial.setText("");
+    }
+
+    public int checkExistProduct(String productID) {
+        int[] a = new int[1];
+        a[0] = -1;
+        MainPage.productArrayList.forEach((n) -> {
+            if (n.getProductID().equalsIgnoreCase(productID)) {
+                a[0] = MainPage.productArrayList.indexOf(n);
+            }
+        });
+        return a[0];
+    }
 
     public boolean validation(MouseEvent event) throws IOException {
         boolean validate = true;
@@ -131,13 +157,18 @@ public class AddProductPane implements Initializable {
                 errorMessage = "Product ID is empty";
                 lblproductIDErrMsg.setText(errorMessage);
 //                ErrorMessageWindow errorMessageWindow = new ErrorMessageWindow(errorMessage);
-
 //                aNewStage = errorMessageWindow.getTheStage();
 //                aNewStage.show();
                 validate = false;
-
             } else {
-                lblproductIDErrMsg.setText("");
+                if (checkExistProduct(TfProductID.getText()) != -1) {
+                    errorMessage = "Product id is already exist";
+                    lblproductIDErrMsg.setText(errorMessage);
+                    validate = false;
+                } else {
+                    lblproductIDErrMsg.setText("");
+                }
+
             }
 
             if (TfProductName.getText().isEmpty()) {
@@ -218,9 +249,9 @@ public class AddProductPane implements Initializable {
             }
 
             if (productBox.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Grocery")) {
-                if (TfCategory.getText() == null) {
+                if (TfCategory.getText().isEmpty()) {
 //                    System.out.println("expiry date is empty");
-                    errorMessage = "Expiry date is empty";
+                    errorMessage = "Category is empty";
                     lblCategoryErrMsg.setText(errorMessage);
                     validate = false;
                 } else {
@@ -266,7 +297,6 @@ public class AddProductPane implements Initializable {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
             if (check) {
-                resetLBLErrMsg();
 
                 String sqlProduct = "INSERT INTO Product (ProductID, ProductName, UnitPrice, SellingPrice, ProductBrand) VALUES ('" + TfProductID.getText() + "', '" + TfProductName.getText() + "', '" + TfUnitPrice.getText() + "', '" + TfSellingPrice.getText() + "', '" + TfProductBrand.getText() + "')";
                 String sql = "";
@@ -283,7 +313,7 @@ public class AddProductPane implements Initializable {
                         sql = "INSERT INTO Electronic (ProductID, Color, models) VALUES ('" + TfProductID.getText() + "', '" + TfElectronicColor.getText() + "', '" + TfModel.getText() + "')";
                     }
                     statement.executeUpdate(sql);
-
+                    clearData();
                 }
             }
 

@@ -13,13 +13,14 @@ public class Order {
     private ArrayList<OrderItem> orderItem;
 
 
-    protected Order(String orderID, LocalDate orderDate,ArrayList<OrderItem>  orderItem){
+    protected Order(String orderID, LocalDate orderDate, ArrayList<OrderItem> orderItem) {
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.orderItem = orderItem;
     }
 
-    protected Order(){}
+    protected Order() {
+    }
 
     public String getOrderID() {
         return orderID;
@@ -41,11 +42,11 @@ public class Order {
         this.orderID = orderID;
     }
 
-    public void setOrderItem(ArrayList<OrderItem>  orderItem) {
+    public void setOrderItem(ArrayList<OrderItem> orderItem) {
         this.orderItem = orderItem;
     }
 
-    public boolean saveToDatabase(Order order){
+    public boolean saveToDatabase(Order order) {
         boolean hasError = false;
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
         try {
@@ -58,9 +59,11 @@ public class Order {
 
             int result = statement.executeUpdate();
 
-            if(result == 1){
+            if (result == 1) {
                 OrderItem ol = new OrderItem();
                 ol.saveToDatabase(order.getOrderItem(), order.getOrderID());
+            } else {
+                hasError = true;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -72,7 +75,7 @@ public class Order {
 
     }
 
-    public ArrayList<Order> getAllOrders(){
+    public ArrayList<Order> getAllOrders() {
         ArrayList<Order> orderList = new ArrayList<>();
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
         try {
