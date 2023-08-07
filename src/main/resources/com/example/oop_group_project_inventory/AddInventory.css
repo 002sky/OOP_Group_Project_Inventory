@@ -1,0 +1,89 @@
+/* Style for labels */
+.label {
+    -fx-text-fill: #333;
+}
+
+/* Style for text fields */
+.text-field {
+    -fx-padding: 5px;
+}
+
+/* Style for text areas */
+.text-area {
+    -fx-padding: 5px;
+}
+
+/* Style for checkboxes */
+.check-box {
+    -fx-padding: 5px;
+}
+
+/* Style for buttons */
+.button {
+    -fx-padding: 8px 12px;
+    -fx-background-color: #2262C6;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Style for error message labels */
+#lblinventoryIDErrMsg, #lblinventoryNameErrMsg, #lblinventoryAddressErrMsg {
+    -fx-text-fill: red;
+}
+
+/* Style for the main label */
+.h3 {
+    -fx-text-fill: #2262C6;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
+/* Style for the VBox container */
+.vbox {
+    -fx-background-color: #F5F5F5;
+}
+
+/* Style for the HBox container */
+.hbox {
+    -fx-spacing: 20px;
+}
+
+/* Style for the GridPane container */
+.grid-pane {
+    -fx-padding: 20px;
+}
+
+/* Style for the button when hovered */
+.button:hover {
+    -fx-background-color: #A7B3C4;
+}
+
+/* Style for the button when pressed */
+.button:pressed {
+    -fx-background-color: #80AFF5;
+}
+
+/* Style for the checkbox label */
+.check-box .label {
+    -fx-padding: 0 5px;
+}
+
+/* Style for text area's border and background */
+.text-area .content {
+    -fx-border-color: #BFBFBF;
+    -fx-background-color: #FFFFFF;
+}
+
+/* Style for focused elements */
+.text-field:focused, .text-area:focused, .check-box:focused {
+    -fx-border-color: #2262C6;
+}
+
+/* Style for the submit button when hovered */
+#BtnSubmit:hover {
+    -fx-background-color: #80AFF5;
+}
+
+/* Neon glow effect for the submit button when focused */
+#BtnSubmit:focused {
+    -fx-effect: dropshadow(three-pass-box, #80AFF5, 10, 0, 0, 0);
+}
