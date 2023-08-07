@@ -12,7 +12,7 @@ public class OrderItem {
     protected OrderItem(){
 
     }
-    public OrderItem(Product orderProduct, int productQuantity, double totalPrice) {
+    protected OrderItem(Product orderProduct, int productQuantity, double totalPrice) {
         this.orderProduct = orderProduct;
         this.productQuantity = productQuantity;
         TotalPrice = totalPrice;
