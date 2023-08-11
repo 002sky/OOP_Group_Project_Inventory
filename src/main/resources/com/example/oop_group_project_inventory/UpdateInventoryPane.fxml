@@ -19,30 +19,30 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <Pane prefHeight="687.0" prefWidth="1094.0">
+    <Pane prefHeight="687.0" prefWidth="1111.0">
 
         <children>
             <Label layoutX="48.0" layoutY="35.0" styleClass="h3" text="Edit Inventory">
             <font>
                <Font name="System Bold" size="24.0" />
             </font></Label>
-            <HBox alignment="CENTER" layoutX="234.0" layoutY="111.0" prefHeight="569.0" prefWidth="933.0" spacing="20.0">
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="56.0" prefHeight="654.0" prefWidth="1044.0" spacing="20.0">
                 <padding>
                     <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
                 </padding>
 
 
-                <GridPane alignment="CENTER" prefHeight="461.0" prefWidth="683.0">
+                <GridPane alignment="CENTER" prefHeight="582.0" prefWidth="720.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.60003662109375" minWidth="10.0" prefWidth="261.60003662109375" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.20001220703125" minWidth="10.0" prefWidth="210.39996337890625" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="183.20001220703125" minWidth="10.0" prefWidth="156.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="371.7333129882812" minWidth="10.0" prefWidth="371.7333129882812" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.20001220703125" minWidth="10.0" prefWidth="169.4666870117187" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="104.60001220703126" minHeight="10.0" prefHeight="100.60001220703126" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="177.59998779296876" minHeight="10.0" prefHeight="177.59998779296876" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="97.60001220703123" minHeight="10.0" prefHeight="63.20001831054685" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
@@ -63,13 +63,13 @@
                         <Font size="18.0" />
                      </font></Label>
 
-                        <TextField fx:id="TfInventoryID" prefHeight="34.0" prefWidth="262.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="TfInventoryID" prefHeight="41.0" prefWidth="334.0" GridPane.columnIndex="1" />
                         <Label fx:id="lblinventoryIDErrMsg" GridPane.columnIndex="2" />
 
-                        <TextField fx:id="TfInventoryName" prefHeight="33.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="TfInventoryName" prefHeight="41.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="lblinventoryNameErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                
-                        <TextArea fx:id="TaInventoryAddress" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextArea fx:id="TaInventoryAddress" prefHeight="121.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="lblinventoryAddressErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="2" />
 
                         <CheckBox fx:id="CbFreezerAvailable" mnemonicParsing="false" text="Available" GridPane.columnIndex="1" GridPane.rowIndex="3">
