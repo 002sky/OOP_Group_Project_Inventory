@@ -25,7 +25,7 @@
             <font>
                <Font name="System Bold" size="24.0" />
             </font></Label>
-            <HBox alignment="CENTER" layoutX="343.0" layoutY="87.0" prefHeight="532.0" prefWidth="877.0" spacing="20.0" stylesheets="@AddInventory.css">
+            <HBox alignment="CENTER" layoutX="329.0" layoutY="77.0" prefHeight="644.0" prefWidth="891.0" spacing="20.0" stylesheets="@AddInventory.css">
                 <padding>
                     <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
                 </padding>
@@ -37,8 +37,8 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.7999633789062" minWidth="6.200097656250023" prefWidth="239.20002441406245" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="92.9999755859375" minHeight="10.0" prefHeight="90.86662902832032" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="107.9333709716797" minHeight="10.0" prefHeight="107.9333709716797" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="176.20004882812498" minHeight="10.0" prefHeight="160.20004882812498" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="109.0000061035156" minHeight="10.0" prefHeight="70.59995117187498" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -67,21 +67,21 @@
          
                                        <TextField fx:id="TfInventoryID" prefHeight="0.0" prefWidth="372.0" GridPane.columnIndex="1">
                      <font>
-                        <Font size="48.0" />
+                        <Font size="18.0" />
                      </font>
                   </TextField>
                         <Label fx:id="lblinventoryIDErrMsg" GridPane.columnIndex="2" />
          
-                                       <TextField fx:id="TfInventoryName" prefHeight="25.0" prefWidth="372.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <TextField fx:id="TfInventoryName" prefHeight="34.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
-                        <Font size="48.0" />
+                        <Font size="18.0" />
                      </font>
                   </TextField>
                         <Label fx:id="lblinventoryNameErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          
-                                       <TextArea fx:id="TaInventoryAddress" prefHeight="151.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <TextArea fx:id="TaInventoryAddress" prefHeight="34.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
-                        <Font size="48.0" />
+                        <Font size="18.0" />
                      </font>
                   </TextArea>
                         <Label fx:id="lblinventoryAddressErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="2" />
