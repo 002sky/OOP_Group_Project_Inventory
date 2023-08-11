@@ -13,7 +13,7 @@
 
 <BorderPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.MainPage">
     <left>
-        <Accordion prefHeight="400.0" prefWidth="119.0" styleClass="linear-grad" stylesheets="@main.css" BorderPane.alignment="CENTER">
+        <Accordion prefHeight="1080.0" prefWidth="122.0" styleClass="linear-grad" stylesheets="@main.css" BorderPane.alignment="CENTER">
             <panes>
                 <TitledPane prefHeight="200.0" prefWidth="200.0" text="Product" textAlignment="CENTER">
                     <content>
@@ -84,11 +84,11 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </TitledPane>
-                <TitledPane prefHeight="200.0" prefWidth="200.0" text="Order">
+                <TitledPane prefHeight="1021.0" prefWidth="66.0" text="Order">
                     <content>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="linear-grad" stylesheets="@main.css">
                             <children>
-                                <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL">
+                                <SplitPane dividerPositions="0.5" orientation="VERTICAL">
                                     <items>
                                         <Button mnemonicParsing="false" onMouseClicked="#loadAddOrder" prefHeight="40.0" prefWidth="106.0" text="Add">
                                             <font>
