@@ -16,13 +16,12 @@ public class Clothing extends Product {
     }
 
     protected Clothing(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus, String clothingType, String clothingSize, String color, String material) {
-        super(productID,productName,unitPrice,sellingPrice,productBrand,productStatus);
+        super(productID, productName, unitPrice, sellingPrice, productBrand, productStatus);
         this.clothingType = clothingType;
         this.clothingSize = clothingSize;
         this.color = color;
         this.material = material;
     }
-
 
 
     public String getClothingType() {
@@ -40,6 +39,7 @@ public class Clothing extends Product {
     public String getMaterial() {
         return material;
     }
+
     public void setClothingType(String clothingType) {
         this.clothingType = clothingType;
     }
@@ -56,6 +56,7 @@ public class Clothing extends Product {
         this.material = material;
     }
 
+    //load data from database
     public ArrayList<Clothing> loadFromDatabase() {
         ArrayList<Clothing> ClothingList = new ArrayList<>();
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
@@ -79,7 +80,7 @@ public class Clothing extends Product {
                 String color = result.getString("color");
                 String material = result.getString("material");
 
-                Clothing a = new Clothing(id,name,unitPrice,sellingPrice,brand,status,type,size,color,material);
+                Clothing a = new Clothing(id, name, unitPrice, sellingPrice, brand, status, type, size, color, material);
 
                 ClothingList.add(a);
 
@@ -96,10 +97,11 @@ public class Clothing extends Product {
 
     }
 
+    //update from database
     public boolean updateProduct(Clothing clothing) {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
 
-        boolean hasError=false;
+        boolean hasError = false;
         try {
             Connection connection = DriverManager.getConnection(url);
 
@@ -121,8 +123,8 @@ public class Clothing extends Product {
                 newStatement.executeUpdate();
 
                 System.out.println("Clothing Updated");
-            }else{
-                 hasError=true;
+            } else {
+                hasError = true;
             }
             //@todo if there is an error return an error message to the user
 
@@ -132,7 +134,7 @@ public class Clothing extends Product {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        return  hasError;
+        return hasError;
     }
 
 }

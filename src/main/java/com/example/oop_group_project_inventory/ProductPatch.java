@@ -45,6 +45,7 @@ public class ProductPatch {
     public Inventory getStoredInventory() {
         return storedInventory;
     }
+
     public LocalDate getReceivedDate() {
         return receivedDate;
     }
@@ -81,13 +82,13 @@ public class ProductPatch {
         this.quantity = quantity;
     }
 
-
-    public int saveToDatabase(ProductPatch productPatch){
+    //add to database
+    public int saveToDatabase(ProductPatch productPatch) {
 
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
         int result = 0;
 
-        try{
+        try {
             Connection connection = DriverManager.getConnection(url);
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
@@ -104,15 +105,15 @@ public class ProductPatch {
             result = statement.executeUpdate();
 
             return result;
-        }catch ( Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return result;
     }
 
-
-    public ArrayList<ProductPatch> loadFromDatabase(){
+    //load data from database
+    public ArrayList<ProductPatch> loadFromDatabase() {
         ArrayList<ProductPatch> list = new ArrayList<>();
 
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
@@ -122,21 +123,20 @@ public class ProductPatch {
 
             String sql = "SELECT * FROM Patch";
 
-
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String tmpProductID = resultSet.getString("productID");
                 String tmpInventoryID = resultSet.getString("inventoryID");
                 Product[] tmpProduct = new Product[1];
                 MainPage.productArrayList.forEach(product -> {
-                    if(product.getProductID().equals(tmpProductID)){
-                        if(product instanceof Electronic){
+                    if (product.getProductID().equals(tmpProductID)) {
+                        if (product instanceof Electronic) {
                             tmpProduct[0] = (Electronic) product;
-                        }else if (product instanceof Grocery){
+                        } else if (product instanceof Grocery) {
                             tmpProduct[0] = (Grocery) product;
-                        }else {
+                        } else {
                             tmpProduct[0] = (Clothing) product;
                         }
                     }
@@ -144,7 +144,7 @@ public class ProductPatch {
 
                 Inventory[] tmpInventory = new Inventory[1];
                 MainPage.inventoryArrayList.forEach(inventory -> {
-                    if(inventory.getInventoryID().equals(tmpInventoryID)){
+                    if (inventory.getInventoryID().equals(tmpInventoryID)) {
                         tmpInventory[0] = inventory;
                     }
                 });
@@ -159,7 +159,7 @@ public class ProductPatch {
                 list.add(productPatch);
             }
 
-        }catch ( Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

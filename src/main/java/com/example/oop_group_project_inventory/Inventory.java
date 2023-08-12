@@ -13,6 +13,7 @@ public class Inventory {
     protected Inventory() {
 
     }
+
     protected Inventory(String inventoryID, String inventoryName, String inventoryLocation, boolean freezerAvailable) {
         this.inventoryID = inventoryID;
         this.inventoryName = inventoryName;
@@ -52,7 +53,9 @@ public class Inventory {
     public void setFreezerAvailable(boolean freezerAvailable) {
         this.freezerAvailable = freezerAvailable;
     }
-    public void addInventory(Inventory inventory){
+
+    //add to database
+    public void addInventory(Inventory inventory) {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
         try {
             Connection connection = DriverManager.getConnection(url);
@@ -70,13 +73,14 @@ public class Inventory {
             }
 
 
-        }catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
 
     }
 
-    public ArrayList<Inventory> getAllInventory(){
+    //load data from database
+    public ArrayList<Inventory> getAllInventory() {
         ArrayList<Inventory> inventoryArrayList = new ArrayList<>();
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
         try {
@@ -99,19 +103,21 @@ public class Inventory {
         return inventoryArrayList;
     }
 
-    public boolean checkInventoryExists(String InventoryID){
+    //check and return whether got existing inventory
+    public boolean checkInventoryExists(String InventoryID) {
         boolean[] inventoryExists = new boolean[1];
         inventoryExists[0] = false;
         MainPage.inventoryArrayList.forEach(inventory -> {
-            if(inventory.getInventoryID().equals(InventoryID)){
+            if (inventory.getInventoryID().equals(InventoryID)) {
                 inventoryExists[0] = true;
             }
         });
         return inventoryExists[0];
     }
 
-    public boolean updateInventory(Inventory inventory){
-        boolean hasError=false;
+    //update database
+    public boolean updateInventory(Inventory inventory) {
+        boolean hasError = false;
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
         try {
             Connection connection = DriverManager.getConnection(url);
@@ -127,10 +133,10 @@ public class Inventory {
             statement.setString(5, inventory.getInventoryID());
             int result = statement.executeUpdate();
 
-            if(result == 1){
+            if (result == 1) {
                 System.out.println("Inventory updated successfully");
 
-            }else{
+            } else {
                 System.out.println("Inventory not updated");
                 hasError = true;
             }
@@ -140,7 +146,7 @@ public class Inventory {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-    return hasError;
+        return hasError;
     }
 
     @Override

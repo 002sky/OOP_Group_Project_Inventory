@@ -4,15 +4,16 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-public  class Electronic extends Product {
+public class Electronic extends Product {
     private String color;
     private String model;
-    protected Electronic(){
+
+    protected Electronic() {
 
     }
 
-    protected Electronic(String productID,String productName,double unitPrice, double sellingPrice ,String productBrand,boolean productStatus,String color, String model){
-        super(productID,productName,unitPrice,sellingPrice,productBrand,productStatus);
+    protected Electronic(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus, String color, String model) {
+        super(productID, productName, unitPrice, sellingPrice, productBrand, productStatus);
         this.color = color;
         this.model = model;
     }
@@ -33,6 +34,7 @@ public  class Electronic extends Product {
         this.model = model;
     }
 
+    //load data from database
     public ArrayList<Electronic> loadFromDatabase() {
         ArrayList<Electronic> electronicList = new ArrayList<>();
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
@@ -55,7 +57,7 @@ public  class Electronic extends Product {
                 String brand = result.getString("Product.productBrand");
                 boolean status = result.getBoolean("Product.productStatus");
 
-                Electronic a = new Electronic(id,name,unitPrice,sellingPrice,brand,status,color,models);
+                Electronic a = new Electronic(id, name, unitPrice, sellingPrice, brand, status, color, models);
                 electronicList.add(a);
 
             }
@@ -68,16 +70,18 @@ public  class Electronic extends Product {
 
         return electronicList;
     }
-    public boolean updateProduct(Electronic electronic){
+
+    //update the database
+    public boolean updateProduct(Electronic electronic) {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
-        boolean hasError=false;
+        boolean hasError = false;
         try {
             Connection connection = DriverManager.getConnection(url);
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 
             int result = super.updateProduct(electronic);
 
-            if(result >=1){
+            if (result >= 1) {
                 String newSql = "UPDATE Electronic SET color = ?, models = ? WHERE productID = ?";
                 PreparedStatement newStatement = connection.prepareStatement(newSql);
                 newStatement.setString(1, electronic.getColor());
@@ -86,18 +90,18 @@ public  class Electronic extends Product {
                 newStatement.executeUpdate();
 
                 System.out.println("Electronic Updated");
-            }else{
-                hasError=true;
+            } else {
+                hasError = true;
             }
 
             //@todo if there is an error return an error message to the user
 
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-return hasError;
+        return hasError;
     }
 }

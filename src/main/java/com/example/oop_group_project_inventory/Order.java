@@ -46,6 +46,7 @@ public class Order {
         this.orderItem = orderItem;
     }
 
+    //add to database
     public boolean saveToDatabase(Order order) {
         boolean hasError = false;
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
@@ -75,6 +76,7 @@ public class Order {
 
     }
 
+    //load data from database
     public ArrayList<Order> getAllOrders() {
         ArrayList<Order> orderList = new ArrayList<>();
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";

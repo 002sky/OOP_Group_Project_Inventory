@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="731.0" prefWidth="1120.0" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.AddPatchPane">
+<VBox alignment="CENTER" prefHeight="731.0" prefWidth="1120.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.AddPatchPane">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -77,22 +68,40 @@
                      </font>
                   </Label>
    
-                    <TextField fx:id="TfPatchNumber" GridPane.columnIndex="1" />
+                    <TextField fx:id="TfPatchNumber" prefHeight="40.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin></TextField>
                     <Label fx:id="lblPatchNumberErrMsg" GridPane.columnIndex="2" />
    
-                    <TextField fx:id="TfSupplySource" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextField fx:id="TfSupplySource" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin></TextField>
                     <Label fx:id="lblSupplySourceErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="1" />
    
-                    <ComboBox fx:id="CbProductBox" prefHeight="26.0" prefWidth="313.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <ComboBox fx:id="CbProductBox" prefHeight="40.0" prefWidth="313.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin></ComboBox>
                     <Label fx:id="lblProductBoxErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="2" />
    
-                    <ComboBox fx:id="CbInventoryBox" prefHeight="26.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <ComboBox fx:id="CbInventoryBox" prefHeight="40.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin></ComboBox>
                     <Label fx:id="lblInventoryBoxErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="3" />
    
-                    <DatePicker fx:id="DpReceivedDate" prefHeight="26.0" prefWidth="314.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    <DatePicker fx:id="DpReceivedDate" prefHeight="40.0" prefWidth="314.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin></DatePicker>
                     <Label fx:id="lblReceivedDateErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="4" />
    
-                    <TextField fx:id="TfQuantity" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                    <TextField fx:id="TfQuantity" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin></TextField>
                     <Label fx:id="lblQuantityErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="5" />
    
                     <Button mnemonicParsing="false" onMouseClicked="#SavePatch" prefHeight="25.0" prefWidth="89.0" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="6">

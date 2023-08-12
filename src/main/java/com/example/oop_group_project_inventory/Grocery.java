@@ -5,12 +5,13 @@ import java.sql.*;
 
 public class Grocery extends Product {
     private String category;
+
     protected Grocery() {
 
     }
 
     protected Grocery(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus, String category) {
-        super(productID,productName,unitPrice,sellingPrice,productBrand, productStatus);
+        super(productID, productName, unitPrice, sellingPrice, productBrand, productStatus);
         this.category = category;
 
     }
@@ -23,6 +24,7 @@ public class Grocery extends Product {
         this.category = category;
     }
 
+    //load data from database
     public ArrayList<Grocery> loadFromDatabase() {
         ArrayList<Grocery> GroceryList = new ArrayList<>();
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
@@ -44,7 +46,7 @@ public class Grocery extends Product {
                 boolean status = result.getBoolean("Product.productStatus");
 
 
-                Grocery a = new Grocery(id,name,unitPrice,sellingPrice,brand,status,category);
+                Grocery a = new Grocery(id, name, unitPrice, sellingPrice, brand, status, category);
                 GroceryList.add(a);
 
             }
@@ -58,9 +60,10 @@ public class Grocery extends Product {
         return GroceryList;
     }
 
+    //update the database
     public boolean updateProduct(Grocery grocery) {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
-        boolean hasError=false;
+        boolean hasError = false;
         try {
             Connection connection = DriverManager.getConnection(url);
             int result = super.updateProduct(grocery);
@@ -77,8 +80,8 @@ public class Grocery extends Product {
                 newStatement.executeUpdate();
 
                 System.out.println("Grocery Updated");
-            }else{
-                 hasError=true;
+            } else {
+                hasError = true;
             }
 
             //@todo if there is an error return an error message to the user

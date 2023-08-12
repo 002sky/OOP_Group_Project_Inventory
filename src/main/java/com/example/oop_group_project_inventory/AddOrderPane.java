@@ -48,6 +48,7 @@ public class AddOrderPane implements Initializable {
     private OrderItem tmpProduct;
     public Stage primaryStage;
 
+    //set every error messages empty
     public void resetLBLErrMsg() {
         lblOrderIDErrMsg.setText("");
         lblDateErrMsg.setText("");
@@ -83,16 +84,17 @@ public class AddOrderPane implements Initializable {
                 TfProductID.setText(MainPage.productArrayList.get(checkExistProduct(newValue)).getProductID());
                 lblProductName.setText(MainPage.productArrayList.get(checkExistProduct(newValue)).getProductName());
                 lblSellingPrice.setText(Double.toString(MainPage.productArrayList.get(checkExistProduct(newValue)).getSellingPrice()));
+
+
             }
         });
 
         initializeColumn();
         ObservableListProducts = FXCollections.observableArrayList();
         TvProduct.setItems(ObservableListProducts);
-
-
     }
 
+    //check and return whether got existing product
     public int checkExistProduct(String productID) {
         int[] a = new int[1];
         a[0] = -1;
@@ -104,6 +106,8 @@ public class AddOrderPane implements Initializable {
 
         return a[0];
     }
+
+    //check and return whether got existing order
 
     public int checkExistOrder(String orderID) {
         int[] a = new int[1];
@@ -117,6 +121,7 @@ public class AddOrderPane implements Initializable {
         return a[0];
     }
 
+    //clear all text field
     public void clearData() {
         TfProductID.setText("");
         TfQuantity.setText("");
@@ -129,6 +134,7 @@ public class AddOrderPane implements Initializable {
         ObservableListProducts.clear();
     }
 
+    //add product to table
     public void addToTable(MouseEvent event) throws IOException {
         if (validation()) {
             double total = Double.parseDouble(lblSellingPrice.getText()) * Integer.parseInt(TfQuantity.getText());
@@ -141,6 +147,7 @@ public class AddOrderPane implements Initializable {
         }
     }
 
+    //initialize table
     private void initializeColumn() {
 
 
@@ -156,6 +163,7 @@ public class AddOrderPane implements Initializable {
 
     }
 
+    //delete an item(product) from table
     public void deleteItem(MouseEvent event) {
         OrderItem product = TvProduct.getSelectionModel().getSelectedItem();
         ObservableListProducts.remove(product);
@@ -163,6 +171,7 @@ public class AddOrderPane implements Initializable {
         TvProduct.refresh();
     }
 
+    //calculate subtotal of price of all items in the table
     public void calSubTotal() {
         double total = 0;
         for (OrderItem product : ObservableListProducts) {
@@ -171,6 +180,7 @@ public class AddOrderPane implements Initializable {
         lblSubTotal.setText(Double.toString(total));
     }
 
+    //validation for every text field
     public boolean validation() throws IOException {
         boolean validate = true;
         String errorMessage = "";
@@ -217,6 +227,7 @@ public class AddOrderPane implements Initializable {
         return validate;
     }
 
+    //add to database
     public void submitToDatabase(MouseEvent event) throws IOException {
         if (validation()) {
             ArrayList<OrderItem> orderItem = new ArrayList<>();
@@ -226,6 +237,7 @@ public class AddOrderPane implements Initializable {
                 Order order = new Order(TfOrderID.getText(), dpOrderDate.getValue(), orderItem);
                 boolean hasError = order.saveToDatabase(order);
 
+                //show pop up message
                 primaryStage = new Stage();
                 primaryStage.setTitle(hasError == true ? "There is an error" : "Success");
                 final Popup popup = new Popup();

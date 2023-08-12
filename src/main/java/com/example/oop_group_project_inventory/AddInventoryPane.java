@@ -50,6 +50,7 @@ public class AddInventoryPane implements Initializable {
 
     }
 
+    //set every error messages empty
     public void resetLBLErrMsg() {
         lblinventoryIDErrMsg.setText("");
         lblinventoryNameErrMsg.setText("");
@@ -60,6 +61,7 @@ public class AddInventoryPane implements Initializable {
         lblinventoryAddressErrMsg.setTextFill(Color.color(1, 0, 0));
     }
 
+    //check and return whether got existing inventory
     public int checkExistInventory(String inventoryID) {
         int[] a = new int[1];
         a[0] = -1;
@@ -72,6 +74,7 @@ public class AddInventoryPane implements Initializable {
         return a[0];
     }
 
+    //clear all text field
     public void clearData() {
         resetLBLErrMsg();
         TfInventoryID.setText("");
@@ -79,6 +82,7 @@ public class AddInventoryPane implements Initializable {
         TaInventoryAddress.setText("");
     }
 
+    //add inventory function
     public void AddInventory(MouseEvent event) throws IOException {
         Inventory inventory = new Inventory();
         //get checking result
@@ -131,6 +135,12 @@ public class AddInventoryPane implements Initializable {
         // TODO Error Message here
     }
 
+    /**
+     * @param event
+     * @return
+     * @throws IOException
+     */
+    //validation for every text field
     public boolean validation(MouseEvent event) throws IOException {
         boolean validate = true;
         if (!TfInventoryID.getText().isEmpty()) {

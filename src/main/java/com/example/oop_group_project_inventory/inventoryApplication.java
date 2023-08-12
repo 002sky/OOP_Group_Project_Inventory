@@ -12,10 +12,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.kordamp.bootstrapfx.BootstrapFX;
-public class inventoryApplication extends Application  {
+
+public class inventoryApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(inventoryApplication.class.getResource("login.fxml"));
@@ -31,8 +31,6 @@ public class inventoryApplication extends Application  {
     public static void main(String[] args) {
         launch();
     }
-
-
 
 
 }

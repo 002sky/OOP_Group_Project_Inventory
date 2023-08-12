@@ -36,7 +36,7 @@ public class AddProductPane implements Initializable {
 //    private TextField ;
 
     @FXML
-    private Label lblproductBoxErrMsg, lblproductIDErrMsg, lblProductNameErrMsg, lblUnitPriceErrMsg, lblSellingPrice, lblproductBrandErrMsg, lblElectronicColorErrMsg, lblModelErrMsg, lblCategoryErrMsg, lblClothingTypeErrMsg, lblClothingSizeErrMsg, lblClothingColorErrMsg, lblClothingMaterialErrMsg;
+    private Label lblProductBoxErrMsg, lblProductIDErrMsg, lblProductNameErrMsg, lblUnitPriceErrMsg, lblSellingPrice, lblProductBrandErrMsg, lblElectronicColorErrMsg, lblModelErrMsg, lblCategoryErrMsg, lblClothingTypeErrMsg, lblClothingSizeErrMsg, lblClothingColorErrMsg, lblClothingMaterialErrMsg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -89,13 +89,14 @@ public class AddProductPane implements Initializable {
         });
     }
 
+    //set every error messages empty
     public void resetLBLErrMsg() {
-        lblproductBoxErrMsg.setText("");
-        lblproductIDErrMsg.setText("");
+        lblProductBoxErrMsg.setText("");
+        lblProductIDErrMsg.setText("");
         lblProductNameErrMsg.setText("");
         lblUnitPriceErrMsg.setText("");
         lblSellingPrice.setText("");
-        lblproductBrandErrMsg.setText("");
+        lblProductBrandErrMsg.setText("");
         lblElectronicColorErrMsg.setText("");
         lblModelErrMsg.setText("");
         lblCategoryErrMsg.setText("");
@@ -104,11 +105,11 @@ public class AddProductPane implements Initializable {
         lblClothingColorErrMsg.setText("");
         lblClothingMaterialErrMsg.setText("");
 
-        lblproductIDErrMsg.setTextFill(Color.color(1, 0, 0));
+        lblProductIDErrMsg.setTextFill(Color.color(1, 0, 0));
         lblProductNameErrMsg.setTextFill(Color.color(1, 0, 0));
         lblUnitPriceErrMsg.setTextFill(Color.color(1, 0, 0));
         lblSellingPrice.setTextFill(Color.color(1, 0, 0));
-        lblproductBrandErrMsg.setTextFill(Color.color(1, 0, 0));
+        lblProductBrandErrMsg.setTextFill(Color.color(1, 0, 0));
         lblElectronicColorErrMsg.setTextFill(Color.color(1, 0, 0));
         lblModelErrMsg.setTextFill(Color.color(1, 0, 0));
         lblCategoryErrMsg.setTextFill(Color.color(1, 0, 0));
@@ -116,10 +117,11 @@ public class AddProductPane implements Initializable {
         lblClothingSizeErrMsg.setTextFill(Color.color(1, 0, 0));
         lblClothingColorErrMsg.setTextFill(Color.color(1, 0, 0));
         lblClothingMaterialErrMsg.setTextFill(Color.color(1, 0, 0));
-        lblproductBoxErrMsg.setTextFill(Color.color(1, 0, 0));
+        lblProductBoxErrMsg.setTextFill(Color.color(1, 0, 0));
 
     }
 
+    //clear all text field
     public void clearData() {
         resetLBLErrMsg();
         TfCategory.setText("");
@@ -136,6 +138,7 @@ public class AddProductPane implements Initializable {
         TfClothingMaterial.setText("");
     }
 
+    //check and return whether got existing product
     public int checkExistProduct(String productID) {
         int[] a = new int[1];
         a[0] = -1;
@@ -147,15 +150,16 @@ public class AddProductPane implements Initializable {
         return a[0];
     }
 
+    //validation for every text field
     public boolean validation(MouseEvent event) throws IOException {
         boolean validate = true;
         if (!productBox.getSelectionModel().isEmpty()) {
-            lblproductBoxErrMsg.setText("");
+            lblProductBoxErrMsg.setText("");
             String errorMessage = "";
             if (TfProductID.getText().isEmpty()) {
 //                System.out.println("product ID is empty");
                 errorMessage = "Product ID is empty";
-                lblproductIDErrMsg.setText(errorMessage);
+                lblProductIDErrMsg.setText(errorMessage);
 //                ErrorMessageWindow errorMessageWindow = new ErrorMessageWindow(errorMessage);
 //                aNewStage = errorMessageWindow.getTheStage();
 //                aNewStage.show();
@@ -163,10 +167,10 @@ public class AddProductPane implements Initializable {
             } else {
                 if (checkExistProduct(TfProductID.getText()) != -1) {
                     errorMessage = "Product id is already exist";
-                    lblproductIDErrMsg.setText(errorMessage);
+                    lblProductIDErrMsg.setText(errorMessage);
                     validate = false;
                 } else {
-                    lblproductIDErrMsg.setText("");
+                    lblProductIDErrMsg.setText("");
                 }
 
             }
@@ -204,10 +208,10 @@ public class AddProductPane implements Initializable {
             if (TfProductBrand.getText().isEmpty()) {
 //                System.out.println("product brand is empty");
                 errorMessage = "Product brand is empty";
-                lblproductBrandErrMsg.setText(errorMessage);
+                lblProductBrandErrMsg.setText(errorMessage);
                 validate = false;
             } else {
-                lblproductBrandErrMsg.setText("");
+                lblProductBrandErrMsg.setText("");
             }
 
             if (productBox.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Clothing")) {
@@ -282,13 +286,14 @@ public class AddProductPane implements Initializable {
         } else {
             String errorMessage = "Please select the product type";
 //            System.out.println("please select the product type");
-            lblproductBoxErrMsg.setText(errorMessage);
+            lblProductBoxErrMsg.setText(errorMessage);
             validate = false;
         }
 
         return validate;
     }
 
+    //add into database
     public void SubmitToDatabase(MouseEvent event) throws IOException {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
         boolean check = validation(event);

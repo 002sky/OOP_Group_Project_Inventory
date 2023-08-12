@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.textfield.TextFields;
 import javafx.collections.ObservableList;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -57,7 +58,7 @@ public class ViewOrderPane implements Initializable {
                 TvOrder.setItems(ObservableListProducts);
                 calSubTotal();
                 TvOrder.refresh();
-            }else {
+            } else {
                 lblDate.setText("");
                 ObservableListProducts.clear();
                 TvOrder.setItems(ObservableListProducts);
@@ -68,13 +69,15 @@ public class ViewOrderPane implements Initializable {
 
     }
 
+    //check and return whether got existing order
     private int checkExistOrder(String newValue) {
         int[] a = new int[1];
         a[0] = -1;
         MainPage.orderArrayList.forEach(order -> {
             if (order.getOrderID().equals(newValue)) {
                 a[0] = MainPage.orderArrayList.indexOf(order);
-            };
+            }
+            ;
         });
         return a[0];
     }
@@ -94,9 +97,9 @@ public class ViewOrderPane implements Initializable {
 
     }
 
-    public void calSubTotal(){
+    public void calSubTotal() {
         double total = 0;
-        for(OrderItem product : ObservableListProducts){
+        for (OrderItem product : ObservableListProducts) {
             total += product.getTotalPrice();
         }
         lblSubTotal.setText(Double.toString(total));

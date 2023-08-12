@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" prefHeight="400.0" prefWidth="600.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.Login">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" prefHeight="400.0" prefWidth="600.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.Login">
     <left>
         <Pane prefHeight="1080.0" prefWidth="611.0" styleClass="linear-grad" stylesheets="@login.css" BorderPane.alignment="CENTER">
             <children>
@@ -46,7 +40,8 @@
                 <TextField fx:id="tfUsername" layoutX="262.0" layoutY="283.0" prefHeight="42.0" prefWidth="351.0" promptText="Username">
                     <font>
                         <Font size="18.0" />
-                    </font></TextField>
+                    </font>
+                </TextField>
                 <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="105.0" layoutY="272.0">
                     <image>
                         <Image url="@../../../user.png" />
@@ -67,7 +62,7 @@
                         <Font size="18.0" />
                     </font>
                 </CheckBox>
-                <Button fx:id="btnLogin" layoutX="300.0" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#changeStage" prefHeight="55.0" prefWidth="129.0" stylesheets="@login.css" text="Login">
+                <Button fx:id="btnLogin" layoutX="300.0" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="55.0" prefWidth="129.0" stylesheets="@login.css" text="Login">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -79,11 +74,27 @@
                         </DropShadow>
                     </effect>
                 </Button>
-            <PasswordField fx:id="tfPassword" layoutX="262.0" layoutY="373.0" prefHeight="43.0" prefWidth="352.0" promptText="Password">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </PasswordField>
+                <PasswordField fx:id="tfPasswordHidden" layoutX="262.0" layoutY="373.0" prefHeight="43.0" prefWidth="352.0" promptText="Password">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </PasswordField>
+
+                <TextField fx:id="tfPasswordShow" layoutX="262.0" layoutY="373.0" prefHeight="43.0" prefWidth="352.0" promptText="Password">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </TextField>
+                <Label fx:id="lblUserNameErrMsg" layoutX="262.0" layoutY="325.0" text="4">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblPasswordErrMsg" layoutX="262.0" layoutY="416.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
             </children>
         </Pane>
     </right>

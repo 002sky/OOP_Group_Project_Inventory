@@ -38,7 +38,7 @@ public class UpdateInventoryPane implements Initializable {
     private Label lblinventoryIDErrMsg, lblinventoryNameErrMsg, lblinventoryAddressErrMsg;
     public Stage primaryStage;
 
-
+    //set every error messages empty
     public void resetLBLErrMsg() {
         lblinventoryIDErrMsg.setText("");
         lblinventoryNameErrMsg.setText("");
@@ -75,6 +75,7 @@ public class UpdateInventoryPane implements Initializable {
 
     }
 
+    //validation for every text field
     public boolean validation() throws IOException {
         boolean validate = true;
         if (!TfInventoryID.getText().isEmpty()) {
@@ -105,6 +106,7 @@ public class UpdateInventoryPane implements Initializable {
         return validate;
     }
 
+    //check and return whether got existing inventory
     public int checkExistInventory(String InventoryID) {
         int[] a = new int[1];
         a[0] = -1;
@@ -116,6 +118,7 @@ public class UpdateInventoryPane implements Initializable {
         return a[0];
     }
 
+    ////update inventory
     public void UpdateInventory(MouseEvent event) throws IOException {
         boolean hasError = false;
 

@@ -36,6 +36,7 @@ public class AddPatchPane implements Initializable {
     private Label lblPatchNumberErrMsg, lblQuantityErrMsg, lblSupplySourceErrMsg, lblReceivedDateErrMsg, lblInventoryBoxErrMsg, lblProductBoxErrMsg;
     public Stage primaryStage;
 
+    //set every error messages empty
     public void resetLBLErrMsg() {
         lblPatchNumberErrMsg.setText("");
         lblQuantityErrMsg.setText("");
@@ -79,6 +80,7 @@ public class AddPatchPane implements Initializable {
         });
     }
 
+    //check and return whether got existing patch
     public int checkExistPatch(String patchNumber) {
         int[] a = new int[1];
         a[0] = -1;
@@ -91,6 +93,7 @@ public class AddPatchPane implements Initializable {
         return a[0];
     }
 
+    //validation for every text field
     public boolean validation() throws IOException {
         boolean validate = true;
         String errorMessage = "";
@@ -151,6 +154,7 @@ public class AddPatchPane implements Initializable {
         return validate;
     }
 
+    //clear all text field
     public void clearData() {
         resetLBLErrMsg();
         TfPatchNumber.setText("");
@@ -161,6 +165,7 @@ public class AddPatchPane implements Initializable {
         CbProductBox.getSelectionModel().clearSelection();
     }
 
+    //add patch function
     public void SavePatch(MouseEvent event) throws IOException {
 
         Product product = CbProductBox.getSelectionModel().getSelectedItem();

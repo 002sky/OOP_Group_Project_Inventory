@@ -10,10 +10,12 @@ public abstract class Product {
     private double sellingPrice;
     private boolean productStatus;
     private String productBrand;
-    protected Product(){
+
+    protected Product() {
 
     }
-    protected Product(String productID,String productName,double unitPrice, double sellingPrice ,String productBrand,boolean productStatus){
+
+    protected Product(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus) {
         this.productID = productID;
         this.productName = productName;
         this.unitPrice = unitPrice;
@@ -65,12 +67,13 @@ public abstract class Product {
     public String getProductBrand() {
         return productBrand;
     }
+
     public boolean isProductStatus() {
         return productStatus;
     }
 
-
-    public int updateProduct(Product product){
+    //update database
+    public int updateProduct(Product product) {
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
         try {
             Connection connection = DriverManager.getConnection(url);
@@ -92,18 +95,17 @@ public abstract class Product {
 
             if (result >= 1) {
                 return result;
-            }else{
+            } else {
                 return 0;
             }
             //@TODO if there is an error return 0
 
 
-
-    }catch (SQLException ex){
-        ex.printStackTrace();
-    }catch (ClassNotFoundException e) {
-        throw new RuntimeException(e);
-    }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         return 0;
     }
 
@@ -111,11 +113,13 @@ public abstract class Product {
     public String toString() {
         return productID + " - " + productName;
     }
-    public int checkProductExists(String productID){
+
+    //check and return whether got existing product
+    public int checkProductExists(String productID) {
         int[] productExists = new int[1];
         productExists[0] = -1;
         MainPage.productArrayList.forEach(product -> {
-            if(product.getProductID().equals(productID)){
+            if (product.getProductID().equals(productID)) {
                 productExists[0] = MainPage.productArrayList.indexOf(product);
             }
         });

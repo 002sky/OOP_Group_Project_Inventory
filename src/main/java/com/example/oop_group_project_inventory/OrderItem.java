@@ -9,9 +9,10 @@ public class OrderItem {
     private int productQuantity;
     private double TotalPrice;
 
-    protected OrderItem(){
+    protected OrderItem() {
 
     }
+
     protected OrderItem(Product orderProduct, int productQuantity, double totalPrice) {
         this.orderProduct = orderProduct;
         this.productQuantity = productQuantity;
@@ -43,11 +44,12 @@ public class OrderItem {
         TotalPrice = totalPrice;
     }
 
-    public boolean saveToDatabase(ArrayList<OrderItem> orderItem, String orderID){
+    //add to database
+    public boolean saveToDatabase(ArrayList<OrderItem> orderItem, String orderID) {
         boolean hasError = false;
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
 
-        for (OrderItem ol: orderItem) {
+        for (OrderItem ol : orderItem) {
             try {
                 Connection connection = DriverManager.getConnection(url);
                 Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -61,10 +63,10 @@ public class OrderItem {
                 int result = statement.executeUpdate();
                 if (result == 1) {
                     hasError = false;
-                }else {
+                } else {
                     hasError = true;
                 }
-            }catch (ClassNotFoundException | SQLException e){
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
 
@@ -73,7 +75,8 @@ public class OrderItem {
         return hasError;
     }
 
-    public ArrayList<OrderItem> getOrderItem(String OrderID){
+    //load data from database
+    public ArrayList<OrderItem> getOrderItem(String OrderID) {
         ArrayList<OrderItem> orderItem = new ArrayList<>();
         String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
         try {
@@ -90,13 +93,13 @@ public class OrderItem {
             int productID;
             Product p = MainPage.productArrayList.get(0);
 
-            while(rs.next()){
+            while (rs.next()) {
                 productID = p.checkProductExists(rs.getString("ProductID"));
 
                 orderItem.add(new OrderItem(MainPage.productArrayList.get(productID), rs.getInt("Quantity"), rs.getDouble("TotalPrice")));
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
