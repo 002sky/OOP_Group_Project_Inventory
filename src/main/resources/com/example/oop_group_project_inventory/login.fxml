@@ -7,7 +7,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" prefHeight="400.0" prefWidth="600.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.Login">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" prefHeight="400.0" prefWidth="600.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.controller.Login">
     <left>
         <Pane prefHeight="1080.0" prefWidth="611.0" styleClass="linear-grad" stylesheets="@login.css" BorderPane.alignment="CENTER">
             <children>

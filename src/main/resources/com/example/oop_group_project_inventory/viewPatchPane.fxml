@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="782.0" prefWidth="1273.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.ViewPatchPane">
+<Pane prefHeight="782.0" prefWidth="1273.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.controller.ViewPatchPane">
     <children>
         <Label layoutX="50.0" layoutY="42.0" text="View Patch">
          <font>

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.MainPage">
+<BorderPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080" minWidth="1920" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.controller.MainPage">
     <left>
         <Accordion prefHeight="1080.0" prefWidth="122.0" styleClass="linear-grad" stylesheets="@main.css" BorderPane.alignment="CENTER">
             <panes>

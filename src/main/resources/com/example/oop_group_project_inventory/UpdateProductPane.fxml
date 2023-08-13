@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="721.0" prefWidth="2360.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.UpdateProductPane">
+<VBox alignment="CENTER" prefHeight="721.0" prefWidth="2360.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.controller.UpdateProductPane">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -76,7 +76,13 @@
                             </Label>
 
 
-                            <Label fx:id="productBox" prefHeight="25.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <Label fx:id="productBox" prefHeight="25.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="1" >
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                            </Label>
+
+
                             <Label fx:id="lblProductBoxErrMsg" GridPane.columnIndex="2" />
 
                             <CheckBox fx:id="CbProductStatus" text="Activate Product" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -113,13 +119,15 @@
                             <TextField fx:id="TfProductBrand" prefHeight="40.0" prefWidth="301.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                         <GridPane.margin>
                            <Insets right="10.0" />
-                        </GridPane.margin></TextField>
-                            <Label fx:id="lblProductBrandErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                            <ComboBox prefHeight="40.0" prefWidth="301.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        </GridPane.margin>
+                            </TextField>
+                            <Label fx:id="lblProductBrandErrMsg" GridPane.columnIndex="2" GridPane.rowIndex="6">
+
                         <GridPane.margin>
                            <Insets right="10.0" />
-                        </GridPane.margin></ComboBox>
+                        </GridPane.margin>
 
+                            </Label>
                         </children>
                     </GridPane>
 

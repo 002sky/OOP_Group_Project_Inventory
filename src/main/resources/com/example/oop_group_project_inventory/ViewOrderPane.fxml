@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane prefHeight="804.0" prefWidth="1506.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.ViewOrderPane">
+<Pane prefHeight="804.0" prefWidth="1506.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_group_project_inventory.controller.ViewOrderPane">
 
     <children>
         <TableView fx:id="TvOrder" layoutX="297.0" layoutY="167.0" prefHeight="491.0" prefWidth="853.0">
@@ -37,15 +44,23 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="lblDate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <DatePicker prefHeight="26.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="lblDate" prefHeight="17.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+                </Label>
             </children>
         </GridPane>
         <Label layoutX="642.0" layoutY="683.0" text="SubTotal :">
          <font>
             <Font size="18.0" />
-         </font></Label>
-        <Label fx:id="lblSubTotal" layoutX="308.0" layoutY="392.0" prefHeight="17.0" prefWidth="31.0" />
+         </font>
+        </Label>
+        <Label fx:id="lblSubTotal" layoutX="741.0" layoutY="683.0" prefHeight="27.0" prefWidth="224.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
       <Text layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Order">
          <font>
             <Font name="System Bold" size="24.0" />

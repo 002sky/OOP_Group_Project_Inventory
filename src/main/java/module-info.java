@@ -17,4 +17,8 @@ module com.example.oop_group_project_inventory {
     opens com.example.oop_group_project_inventory to javafx.fxml;
 
     exports com.example.oop_group_project_inventory;
+    exports com.example.oop_group_project_inventory.controller;
+    opens com.example.oop_group_project_inventory.controller to javafx.fxml;
+    exports com.example.oop_group_project_inventory.model;
+    opens com.example.oop_group_project_inventory.model to javafx.fxml;
 }
