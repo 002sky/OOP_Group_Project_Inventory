@@ -125,7 +125,7 @@
                     <!--                layoutX="318.0" layoutY="39.0" -->
                     <GridPane alignment="CENTER_LEFT" prefWidth="518.0">
                         <children>
-                            <GridPane fx:id="Grocery" visible="false">
+                            <GridPane fx:id="GpGrocery" visible="false">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
@@ -154,7 +154,7 @@
                         </children>
 
                         <children>
-                            <GridPane fx:id="Electronic" visible="false">
+                            <GridPane fx:id="GpElectronic" visible="false">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
@@ -195,7 +195,7 @@
                         </children>
 
                         <children>
-                            <GridPane fx:id="Clothing" prefWidth="558.0" visible="false">
+                            <GridPane fx:id="GpClothing" prefWidth="558.0" visible="false">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.4000244140625" minWidth="10.0" prefWidth="150.5" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.5" minWidth="10.0" prefWidth="200.0" />

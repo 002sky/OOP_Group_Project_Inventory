@@ -1,5 +1,9 @@
 package com.example.oop_group_project_inventory.controller;
 
+import com.example.oop_group_project_inventory.model.Clothing;
+import com.example.oop_group_project_inventory.model.Electronic;
+import com.example.oop_group_project_inventory.model.Grocery;
+import com.example.oop_group_project_inventory.model.Product;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,7 +26,7 @@ public class AddProductPane implements Initializable {
     private ComboBox productBox;
 
     @FXML
-    private GridPane Grocery, Electronic, Clothing;
+    private GridPane GpGrocery, GpElectronic, GpClothing;
 
     @FXML
     private TextField TfCategory, TfProductID, TfProductName, TfUnitPrice, TfSellingPrice, TfProductBrand, TfElectronicColor, TfModel, TfClothingType, TfClothingSize, TfClothingColor, TfClothingMaterial;
@@ -55,22 +59,22 @@ public class AddProductPane implements Initializable {
             public void changed(ObservableValue observableValue, Object o, Object t1) {
 
                 if (t1.toString().equalsIgnoreCase("Grocery")) {
-                    Grocery.setVisible(true);
-                    Electronic.setVisible(false);
-                    Clothing.setVisible(false);
+                    GpGrocery.setVisible(true);
+                    GpElectronic.setVisible(false);
+                    GpClothing.setVisible(false);
 
                 } else if (t1.toString().equalsIgnoreCase("Electronic")) {
-                    Grocery.setVisible(false);
-                    Clothing.setVisible(false);
-                    Electronic.setVisible(true);
+                    GpGrocery.setVisible(false);
+                    GpClothing.setVisible(false);
+                    GpElectronic.setVisible(true);
                 } else if (t1.toString().equalsIgnoreCase("Clothing")) {
-                    Grocery.setVisible(false);
-                    Clothing.setVisible(true);
-                    Electronic.setVisible(false);
+                    GpGrocery.setVisible(false);
+                    GpClothing.setVisible(true);
+                    GpElectronic.setVisible(false);
                 } else {
-                    Grocery.setVisible(false);
-                    Clothing.setVisible(false);
-                    Electronic.setVisible(false);
+                    GpGrocery.setVisible(false);
+                    GpClothing.setVisible(false);
+                    GpElectronic.setVisible(false);
                 }
 
 
@@ -148,6 +152,7 @@ public class AddProductPane implements Initializable {
 
     /**
      * check whether got existing product
+     *
      * @param productID accept product id as parameter
      * @return return index of the product in Mainpage.productArrayList
      */
@@ -165,6 +170,7 @@ public class AddProductPane implements Initializable {
 
     /**
      * validation for every text field
+     *
      * @throws IOException
      */
     //validation for every text field
@@ -314,6 +320,7 @@ public class AddProductPane implements Initializable {
      * add product into database via Product class
      * if validation is true then add into database
      * if validation is false then show error message
+     *
      * @throws IOException
      */
     //add into database
@@ -323,31 +330,35 @@ public class AddProductPane implements Initializable {
         try {
             Connection connection = DriverManager.getConnection(url);
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-
             if (check) {
-
-                String sqlProduct = "INSERT INTO Product (ProductID, ProductName, UnitPrice, SellingPrice, ProductBrand) VALUES ('" + TfProductID.getText() + "', '" + TfProductName.getText() + "', '" + TfUnitPrice.getText() + "', '" + TfSellingPrice.getText() + "', '" + TfProductBrand.getText() + "')";
                 String sql = "";
 
-                Statement statement = connection.createStatement();
-                int result = statement.executeUpdate(sqlProduct);
+                if (productBox.getValue().toString().equalsIgnoreCase("Clothing")) {
+                    Clothing product = new Clothing(TfProductID.getText(), TfProductName.getText(), Double.parseDouble(TfUnitPrice.getText()), Double.parseDouble(TfSellingPrice.getText()), TfProductBrand.getText(),CbProductStatus.isSelected(), TfClothingColor.getText(), TfClothingMaterial.getText(), TfClothingSize.getText(), TfClothingType.getText());
 
-                if (result > 0) {
-                    if (productBox.getValue().toString().equalsIgnoreCase("Clothing")) {
-                        sql = "INSERT INTO Clothing (ProductID, color, material, clothingSize,clothingType) VALUES ('" + TfProductID.getText() + "', '" + TfClothingColor.getText() + "', '" + TfClothingMaterial.getText() + "', '" + TfClothingSize.getText() + "', '" + TfClothingType.getText() + "')";
-                    } else if (productBox.getValue().toString().equalsIgnoreCase("Grocery")) {
-                        sql = "INSERT INTO Grocery (ProductID, Category) VALUES ('" + TfProductID.getText() + "', '" + TfCategory.getText() + "')";
-                    } else if (productBox.getValue().toString().equalsIgnoreCase("Electronic")) {
-                        sql = "INSERT INTO Electronic (ProductID, Color, models) VALUES ('" + TfProductID.getText() + "', '" + TfElectronicColor.getText() + "', '" + TfModel.getText() + "')";
-                    }
-                    statement.executeUpdate(sql);
-                    clearData();
+                    product.addProduct(product, productBox.getValue().toString());
+
+                } else if (productBox.getValue().toString().equalsIgnoreCase("Grocery")) {
+                    Grocery product = new Grocery(TfProductID.getText(), TfProductName.getText(), Double.parseDouble(TfUnitPrice.getText()), Double.parseDouble(TfSellingPrice.getText()), TfProductBrand.getText(), CbProductStatus.isSelected(), TfCategory.getText());
+
+                    product.addProduct(product, productBox.getValue().toString());
+
+
+                } else if (productBox.getValue().toString().equalsIgnoreCase("Electronic")) {
+                    Electronic product = new Electronic(TfProductID.getText(), TfProductName.getText(), Double.parseDouble(TfUnitPrice.getText()), Double.parseDouble(TfSellingPrice.getText()), TfProductBrand.getText(), CbProductStatus.isSelected(),TfElectronicColor.getText(), TfModel.getText());
+
+                    product.addProduct(product, productBox.getValue().toString());
+
                 }
+
+                clearData();
+
             }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
     }
 
 

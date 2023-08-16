@@ -25,11 +25,12 @@ public abstract class Product {
 
     /**
      * constructor
-     * @param productID accept productID as String parameter
-     * @param productName accept productName as String parameter
-     * @param unitPrice accept unitPrice as double parameter
-     * @param sellingPrice accept sellingPrice as double parameter
-     * @param productBrand accept productBrand as String parameter
+     *
+     * @param productID     accept productID as String parameter
+     * @param productName   accept productName as String parameter
+     * @param unitPrice     accept unitPrice as double parameter
+     * @param sellingPrice  accept sellingPrice as double parameter
+     * @param productBrand  accept productBrand as String parameter
      * @param productStatus accept productStatus as boolean parameter
      */
     public Product(String productID, String productName, double unitPrice, double sellingPrice, String productBrand, boolean productStatus) {
@@ -43,6 +44,7 @@ public abstract class Product {
 
     /**
      * setters
+     *
      * @param productID accept productID as String parameter
      */
     public void setProductID(String productID) {
@@ -51,6 +53,7 @@ public abstract class Product {
 
     /**
      * setters
+     *
      * @param productName accept productName as String parameter
      */
     public void setProductName(String productName) {
@@ -59,6 +62,7 @@ public abstract class Product {
 
     /**
      * setters
+     *
      * @param unitPrice accept unitPrice as double parameter
      */
     public void setUnitPrice(double unitPrice) {
@@ -67,6 +71,7 @@ public abstract class Product {
 
     /**
      * setters
+     *
      * @param sellingPrice accept sellingPrice as double parameter
      */
     public void setSellingPrice(double sellingPrice) {
@@ -75,6 +80,7 @@ public abstract class Product {
 
     /**
      * setters
+     *
      * @param productBrand accept productBrand as String parameter
      */
     public void setProductBrand(String productBrand) {
@@ -83,6 +89,7 @@ public abstract class Product {
 
     /**
      * setters
+     *
      * @param productStatus accept productStatus as boolean parameter
      */
     public void setProductStatus(boolean productStatus) {
@@ -91,6 +98,7 @@ public abstract class Product {
 
     /**
      * getters
+     *
      * @return return productID as String value
      */
     public String getProductID() {
@@ -99,6 +107,7 @@ public abstract class Product {
 
     /**
      * getters
+     *
      * @return return productName as String value
      */
     public String getProductName() {
@@ -107,6 +116,7 @@ public abstract class Product {
 
     /**
      * getters
+     *
      * @return return unitPrice as double value
      */
     public double getUnitPrice() {
@@ -115,6 +125,7 @@ public abstract class Product {
 
     /**
      * getters
+     *
      * @return return sellingPrice as double value
      */
     public double getSellingPrice() {
@@ -123,6 +134,7 @@ public abstract class Product {
 
     /**
      * getters
+     *
      * @return return productBrand as String value
      */
     public String getProductBrand() {
@@ -131,6 +143,7 @@ public abstract class Product {
 
     /**
      * getters
+     *
      * @return return productStatus as boolean value
      */
     public boolean isProductStatus() {
@@ -139,6 +152,7 @@ public abstract class Product {
 
     /**
      * Load data from database
+     *
      * @param product accept a customer object product and its subclass as parameter
      * @return return a integer value for determine the success or failure
      */
@@ -179,6 +193,85 @@ public abstract class Product {
         return 0;
     }
 
+    public void addProduct(Product product, String productType) {
+        String url = "jdbc:ucanaccess://src/main/resources/Inventory.accdb";
+        try {
+            Connection connection = DriverManager.getConnection(url);
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+            String sql = "INSERT INTO Product (productID, productName, unitPrice, sellingPrice, productBrand, productStatus) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, product.getProductID());
+            statement.setString(2, product.getProductName());
+            statement.setDouble(3, product.getUnitPrice());
+            statement.setDouble(4, product.getSellingPrice());
+            statement.setString(5, product.getProductBrand());
+            statement.setBoolean(6, product.isProductStatus());
+
+            int result = statement.executeUpdate();
+
+
+            String sql2 = "";
+            int result2 = 0;
+            if (result >= 1) {
+                if (productType.equalsIgnoreCase("Clothing")) {
+                    Clothing c = (Clothing) product;
+                     sql2 = "INSERT INTO Clothing (productID, clothingType, clothingSize, color, material) VALUES (?, ?, ?, ?, ?)";
+                    PreparedStatement statement2 = connection.prepareStatement(sql2);
+                    statement2.setString(1, product.getProductID());
+                    statement2.setString(2, c.getClothingType());
+                    statement2.setString(3, c.getClothingSize());
+                    statement2.setString(4, c.getColor());
+                    statement2.setString(5, c.getMaterial());
+
+                    result2 = statement2.executeUpdate();
+
+                    if (result2 >= 1){
+                        MainPage.productArrayList.add(c);
+                    }
+
+
+                } else if (productType.equalsIgnoreCase("Grocery")) {
+                    Grocery g = (Grocery) product;
+                     sql2 = "INSERT INTO Grocery (productID, Category) VALUES (?, ?)";
+                    PreparedStatement statement3 = connection.prepareStatement(sql2);
+                    statement3.setString(1, product.getProductID());
+                    statement3.setString(2, g.getCategory());
+                    result2 = statement3.executeUpdate();
+
+                    if (result2 >= 1){
+                        MainPage.productArrayList.add(g);
+                    }
+
+
+                } else if (productType.equalsIgnoreCase("Electronic")) {
+
+                    Electronic e = (Electronic) product;
+                    sql2 = "INSERT INTO Electronic (productID,color ,models) VALUES (?, ?, ?)";
+                    PreparedStatement statement4 = connection.prepareStatement(sql2);
+                    statement4.setString(1, product.getProductID());
+                    statement4.setString(2, e.getColor());
+                    statement4.setString(3, e.getModel());
+
+                    result2 = statement4.executeUpdate();
+
+                    if (result2 >= 1){
+                        MainPage.productArrayList.add(e);
+                    }
+
+                }
+
+            }
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+
+
     /**
      * @return return productID + productName as String
      */
@@ -189,6 +282,7 @@ public abstract class Product {
 
     /**
      * check and return whether got existing product in the Arraylist
+     *
      * @param productID accept productID as String parameter
      * @return return the index of the product in the arraylist as an integer
      */
@@ -202,4 +296,6 @@ public abstract class Product {
         });
         return productExists[0];
     }
+
+
 }

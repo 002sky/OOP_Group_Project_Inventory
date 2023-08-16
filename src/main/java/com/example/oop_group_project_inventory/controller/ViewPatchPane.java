@@ -2,12 +2,15 @@ package com.example.oop_group_project_inventory.controller;
 
 import com.example.oop_group_project_inventory.model.ProductPatch;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,15 +32,14 @@ public class ViewPatchPane implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeTableColumn();
+        setTvProductPatch();
 
 
-        ProductPatch productPatch = new ProductPatch();
 
-        MainPage.productPatchArrayList.addAll(productPatch.loadFromDatabase());
+    }
 
-
-        FilteredList<ProductPatch> filteredList = new FilteredList<>(FXCollections.observableArrayList(MainPage.productPatchArrayList), p -> true);
-
+    private void initializeTableColumn() {
         productPatchTableCloumn[0] = new TableColumn<>("Patch Number");
         productPatchTableCloumn[0].setCellValueFactory(new PropertyValueFactory<ProductPatch, String>("patchNumber"));
 
@@ -56,9 +58,19 @@ public class ViewPatchPane implements Initializable {
         productPatchTableCloumn[5] = new TableColumn<>("Quantity");
         productPatchTableCloumn[5].setCellValueFactory(new PropertyValueFactory<ProductPatch, String>("quantity"));
 
+        for (TableColumn<ProductPatch, String> column : productPatchTableCloumn) {
+            TvProductPatch.getColumns().add(column);
+        }
+    }
+
+    public void setTvProductPatch() {
+
+        ProductPatch productPatch = new ProductPatch();
+        MainPage.productPatchArrayList.addAll(productPatch.loadFromDatabase());
+        ObservableList<ProductPatch> data = FXCollections.observableArrayList(MainPage.productPatchArrayList);
+        FilteredList<ProductPatch> filteredList = new FilteredList<>(data, p -> true);
 
         TfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-
             filteredList.setPredicate(product -> {
                         if (newValue == null || newValue.isEmpty()) {
                             return true;
@@ -81,12 +93,14 @@ public class ViewPatchPane implements Initializable {
         SortedList<ProductPatch> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(TvProductPatch.comparatorProperty());
 
-        for (TableColumn<ProductPatch, String> column : productPatchTableCloumn) {
-            TvProductPatch.getColumns().add(column);
-        }
-
         TvProductPatch.setItems(sortedList);
-
+        TvProductPatch.onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                data.clear();
+                data.addAll(MainPage.productPatchArrayList);
+            }
+        });
 
     }
 }

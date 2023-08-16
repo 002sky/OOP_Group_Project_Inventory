@@ -114,6 +114,7 @@ public class MainPage implements Initializable {
      * load the view patch pane
      */
     public void LoadViewPatch(MouseEvent event) {
+
         ContentPane.setContent(activate("ViewPatch"));
     }
 

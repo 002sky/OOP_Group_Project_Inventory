@@ -169,7 +169,13 @@ public class ProductPatch {
             statement.setString(5, productPatch.getReceivedDate().toString());
             statement.setInt(6, productPatch.getQuantity());
 
+
+
             result = statement.executeUpdate();
+
+            if(result == 1){
+                MainPage.productPatchArrayList.add(productPatch);
+            }
 
             return result;
         } catch (Exception e) {

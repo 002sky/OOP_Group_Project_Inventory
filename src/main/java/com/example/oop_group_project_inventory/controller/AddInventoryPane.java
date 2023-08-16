@@ -105,9 +105,7 @@ public class AddInventoryPane implements Initializable {
         //get checking result
         boolean check = validation(event);
         if (check) {
-
             if (!inventory.checkInventoryExists(TfInventoryID.getText())) {
-
                 // TODO validation of the Textfield
                 inventory = new Inventory(TfInventoryID.getText(), TfInventoryName.getText(), TaInventoryAddress.getText(), CbFreezerAvailable.isSelected());
                 MainPage.inventoryArrayList.add(inventory);

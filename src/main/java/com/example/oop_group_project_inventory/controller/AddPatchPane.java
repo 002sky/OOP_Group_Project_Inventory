@@ -59,11 +59,11 @@ public class AddPatchPane implements Initializable {
     }
 
     /**
-     *  initialize the ProductList and InventoryList with item in Mainpage.productArrayList and Mainpage.inventoryArrayList
-     *  ProductList and InventoryList are observable and added to ComboBox
-     *  initialize the text field TfQuantity and TfPatchNumber with Listener
-     *  TfPatchNumber will check whether got existing patch
-     *  TfQuantity will check whether is number
+     * initialize the ProductList and InventoryList with item in Mainpage.productArrayList and Mainpage.inventoryArrayList
+     * ProductList and InventoryList are observable and added to ComboBox
+     * initialize the text field TfQuantity and TfPatchNumber with Listener
+     * TfPatchNumber will check whether got existing patch
+     * TfQuantity will check whether is number
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,6 +77,19 @@ public class AddPatchPane implements Initializable {
 
         CbProductBox.setItems(productList);
         CbInventoryBox.setItems(inventoryList);
+
+        CbInventoryBox.onMouseClickedProperty().addListener(observable -> {
+            inventoryList.clear();
+            inventoryList.addAll(MainPage.inventoryArrayList);
+            CbInventoryBox.setItems(inventoryList);
+        });
+
+        CbProductBox.onMouseClickedProperty().addListener(observable -> {
+            productList.clear();
+            productList.addAll(MainPage.productArrayList);
+            CbProductBox.setItems(productList);
+        });
+
         TfQuantity.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 TfQuantity.setText(newValue.replaceAll("[^\\d\\.]", ""));
@@ -94,6 +107,7 @@ public class AddPatchPane implements Initializable {
 
     /**
      * check whether got existing patch
+     *
      * @param patchNumber accept patch number as parameter
      * @return return the index of patch number in Mainpage.productPatchArrayList
      */
@@ -112,6 +126,7 @@ public class AddPatchPane implements Initializable {
 
     /**
      * validation for every text field
+     *
      * @return return boolean value of validation
      * @throws IOException
      */
@@ -194,6 +209,7 @@ public class AddPatchPane implements Initializable {
      * save patch to database using the ProductPatch class
      * if success then clear all text field
      * if error then show error message
+     *
      * @throws IOException
      */
     //add patch function
